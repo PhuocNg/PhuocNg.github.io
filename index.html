@@ -46,13 +46,16 @@
 	.carousel-inner>.item>img{height:500px;
 								width:100%}
 /*   General*/
+	body{background-color:;}
+	p{font-weight:600;}
+	a:hover{text-decoration:none;}
 	hr{margin-left:15px;
 		margin-right:65px;
 		border-top: 5px solid black;}
-	h2{padding-left:10px;
+	h2{
 		color:rgba(217,77,61,1.00)}
 	
-	#info{margin-left:10%}
+	#info{margin-left:}
 	#info-detail{margin-top:50px;}
 	.thongtin{margin-left:15px;
 			margin-right:65px;}
@@ -65,10 +68,14 @@
 		margin-left:-25px;
 		margin-right:60px;}
 	
-	.thumbnail{border:none;}
-	.thumbnail:hover{border:1px solid gray;
-					text-decoration: none;}
-	
+	.thumbnail{border:}
+
+	@media screen and (max-width: 760px) {
+    ul.footer {text-align:center;
+    			}
+    h5.footer-title{text-align:center;
+    			}
+	}
 /*	Trang detail*/
 	img.pic-detail{width:100%;
 					height:100%}
@@ -77,6 +84,7 @@
 					margin-top:20px;
 					margin-left:1%;
 					margin-right:1px;}
+	#info{margin-left:}
 /*	Trang detail comment*/
 	.star{display:inline-block;}
 	input, textarea {display:block;
@@ -87,12 +95,47 @@
 				margin-right:65px;}
 	
 /*Book trang Home*/
-	.book{width:80%;
-		height:100%;}
+	.book{
+		text-align:center;
+		margin-bottom:20px;
+		margin-top: 20px;}
 	.price{color:red}
-	.star{color:rgba(204,194,34,1.00)}
-	.book-detail{margin-left:20px;
+	.star{color:rgba(204,194,34,1.00);
+			}
+	.book-home{
+				display: inline-block;}
+	.heading{border-bottom:solid 3px black;}
+	.book-heading{}
+	.book-detail{width:100%;
+				height:100%;
+				padding-left:12px;
+				text-align:center;}
+	.book-img{width:80%;
+			height:100%;}
+	.book-img:hover{box-shadow: 2px 2px 15px gray;}
+	.book-detail>h3>a{
+				margin-left:20px;
 				color:black;}
+	.book-title{color:rgba(3,81,183,1.00)}
+	.book-title:hover{color:rgba(167,219,220,1.00);
+					}
+	.categories-detail{
+					text-align:center;
+					margin-bottom:20px;
+					margin-top: 20px;}
+	.categories-wrap{}
+	#categories{list-style-type: none;}
+	ul#categories>li{text-align:center;
+					font-weight:500;
+					 margin-left:-35px;
+					 padding-top:5px;
+					 padding-bottom:5px;
+					}
+	ul#categories>li:hover{background-color:rgba(255,78,0,1.00);
+							color:white;
+							box-shadow: 2px 2px 15px gray;
+							}
+	.fa-star,.fa-star-o{width:10px;}
 /*Trang upload*/
 	#form-upload{width:80%;
 				height:100%;
@@ -121,7 +164,7 @@
 	footer{padding:85px 20px 85px 20px;
 			background-color:rgba(30,33,40,1.00);
 			color:white;
-			;}
+			margin-top:30px;}
 	ul.footer{
 			font-weight:normal;
 			list-style-type: none;
@@ -205,274 +248,433 @@
 		<span class="sr-only">Next</span>
 	  </a>
 	</div>
-	<br/>
+<br/>
 
 	<!--Content	-->
-	<div class="content">
-		<div class="container">
-			<div class="row">
-				<h2>New product</h2>
-				<hr style="margin-right:15px"/>
+<div class="content">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Categories</h2>
+					</div>
+					<div class="categories-detail">
+						<ul id="categories">
+							<li ng-click="#/bookAll"> Advertising </li>
+							<li ng-click="#/bookAll"> Marketing </li>
+							<li ng-click="#/bookAll"> Education </li>
+							<li ng-click="#/bookAll"> Kid </li>
+							<li ng-click="#/bookAll"> Literature </li>
+						</ul>
+					</div>
+				</div>
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Price</h2>
+					</div>
+					<div class="categories-detail">
+						<ul id="categories">
+							<li ng-click="#/bookAll"> < 10$</li>
+							<li ng-click="#/bookAll"> 10$ - 20$</li>
+							<li ng-click="#/bookAll"> 20$ - 40$</li>
+							<li ng-click="#/bookAll"> 40$ - 60$</li>
+							<li ng-click="#/bookAll"> > 60$ </li>
+						</ul>
+					</div>
+				</div>
+
 			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
+
+			<div class="col-md-9">
+
+						<div class="book-home">
+							<div class=" heading col-md-12 col-sm-12">    
+							<h2>New product</h2>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="book-home">
+							<div class=" heading col-md-12 col-sm-12">    
+							<h2>Best seller</h2>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" >
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="book-home">
+							<div class=" heading col-md-12 col-sm-12">    
+							<h2>Top trend</h2>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
 				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
 				</div>
 			</div>
-			<br/>
-			<div class="row">
-				<h2>Best Seller</h2>
-				<hr style="margin-right:15px"/>
-			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-			</div>
-			<br/>
 		</div>
 	</div>
+</div>
 </script>
 
 <!--		All Book-->
 <script type="text/ng-template" id="pages/bookAll.html">
-		<div class="content">
+	<div class="content">
 		<div class="container">
 			<div class="row" >
-				<h2>All Books</h2>
-				<hr style="margin-right:15px"/>
+			
+			<div class="col-md-3">
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Categories</h2>
+					</div>
+					<div class="categories-detail">
+						<ul id="categories">
+							<li ng-click="#/bookAll"> Advertising </li>
+							<li ng-click="#/bookAll"> Marketing </li>
+							<li ng-click="#/bookAll"> Education </li>
+							<li ng-click="#/bookAll"> Kid </li>
+							<li ng-click="#/bookAll"> Literature </li>
+						</ul>
+					</div>
+				</div>
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Price</h2>
+					</div>
+					<div class="categories-detail">
+						<ul id="categories">
+							<li ng-click="#/bookAll"> < 10$</li>
+							<li ng-click="#/bookAll"> 10$ - 20$</li>
+							<li ng-click="#/bookAll"> 20$ - 40$</li>
+							<li ng-click="#/bookAll"> 40$ - 60$</li>
+							<li ng-click="#/bookAll"> > 60$ </li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="thumbnail">
-					<a href="#/bookDetail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book">
-					<div class="book-detail">
-						<h3> Viral Book</h3>
-						<p> Gam 7</p>
-						<div class="star"></div> 
-						<p class="price">$75.00</p>
-					</div>
-					</a>
-					</div>
-				</div>
-				
+
+				<div class="col-md-9 col-lg-9 col-xs-9">
+
+						<div class="book-home">
+							<div class=" heading col-md-12 col-sm-12">    
+							<h2>All Book</h2>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<div class="book">	
+									<div class="book-heading">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+									</div>
+									<div class="book-detail">
+										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
+										<p> Gam 7</p>
+										<div class="star"></div> 
+										<p class="price">$75.00</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
 			</div>
+		</div>
+	</div>
 	</script>
 	
 <!--Book in detail-->
@@ -480,13 +682,45 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-3" style="margin-left:10%">
+		<div class="col-md-3">
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Categories</h2>
+					</div>
+					<div class="categories-detail">
+						<ul id="categories">
+							<li ng-click="#/bookAll"> Advertising </li>
+							<li ng-click="#/bookAll"> Marketing </li>
+							<li ng-click="#/bookAll"> Education </li>
+							<li ng-click="#/bookAll"> Kid </li>
+							<li ng-click="#/bookAll"> Literature </li>
+						</ul>
+					</div>
+				</div>
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Price</h2>
+					</div>
+					<div class="categories-detail">
+						<ul id="categories">
+							<li ng-click="#/bookAll"> < 10$</li>
+							<li ng-click="#/bookAll"> 10$ - 20$</li>
+							<li ng-click="#/bookAll"> 20$ - 40$</li>
+							<li ng-click="#/bookAll"> 40$ - 60$</li>
+							<li ng-click="#/bookAll"> > 60$ </li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
 				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail">
 				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
 				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
 				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
 			</div>
-			<div class="col-sm-5" id="info">
+			<div class="col-md-5" id="info">
 				<h3> GAM7 Book No 2: Saturation - Điểm Bão Hòa</h3>
 				<p> Gam 7</p>
 				<div class="star"> </div> <p> (1 đánh giá) </p>
@@ -562,11 +796,14 @@ Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Hu�
 </div>
 </div>
 </script>
+
+<div class="ng-view"></div>
+
 <!--Footer-->
-<footer hidden>
+<footer>
 	<div class="content">
 		<div class="row">
-			<div class="col-lg-4" id="footer-logo">
+			<div class="col-lg-4 col-md-4 col-xs-12" id="footer-logo">
 				<h1>Book Shop</h1>
 				<div class="social-link">
 					<a href="">
@@ -586,8 +823,8 @@ Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Hu�
 					</a>
 				</div>
 			</div>
-			<div class="col-lg-2">
-				<h5>ABOUT US</h5>
+			<div class="col-lg-2 col-md-2 col-xs-12">
+				<h5 class="footer-title">ABOUT US</h5>
 				<ul class="footer">
 				<li><a href="">About Us</a></li>
 				<li><a href="">Our Team</a></li>
@@ -595,8 +832,8 @@ Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Hu�
 				<li><a href="">Contact Us</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-2">
-				<h5>OUR NETWORK</h5>
+			<div class="col-lg-2 col-md-2 col-xs-12">
+				<h5 class="footer-title">OUR NETWORK</h5>
 				<ul class="footer">
 				<li><a href="">Tiki</a></li>
 				<li><a href="">Book Store</a></li>
@@ -604,8 +841,8 @@ Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Hu�
 				<li><a href="">E-Book</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-2">
-				<h5>SITE LINKS</h5>
+			<div class="col-lg-2 col-md-2 col-xs-12">
+				<h5 class="footer-title">SITE LINKS</h5>
 				<ul class="footer">
 				<li><a href="">Deals</a></li>
 				<li><a href="">Advertising</a></li>
@@ -613,8 +850,8 @@ Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Hu�
 				<li><a href="">Term &amp; Privacy</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-2">
-				<h5>LANGUAGES</h5>
+			<div class="col-lg-2 col-md-2 col-xs-12">
+				<h5 class="footer-title">LANGUAGES</h5>
 				<ul class="footer">
 				<li><a href="">English</a></li>
 				<li><a href="">France</a></li>
@@ -627,7 +864,7 @@ Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Hu�
 </footer>
 <!-- Pagination-->
 
-<div class="ng-view"></div>
+
 </body>
 
 <!--Tùy chỉnh-->
