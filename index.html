@@ -30,6 +30,7 @@
 	.navbar{border-radius:0px;
 			background-color:rgba(30,33,40,1.00);
 			}
+	ul.navbar-nav{}
 	ul.navbar-nav>li>a{color:#666;}
 	ul.navbar-nav>li>a:hover{background: black;
 							color:white;}
@@ -37,6 +38,9 @@
 							color:white}
 	.navbar-brand{color:white}
 	.navbar-brand:hover{color:white;}
+	ul.drop-cate{position:relative;
+				display:none;}
+	.dropdown:hover ul.dropdown-cate{display:block !important;}
 	
 /*	Carousel*/
 	#myCarousel{
@@ -47,7 +51,7 @@
 								width:100%}
 /*   General*/
 	body{background-color:;}
-	p{font-weight:600;}
+	p{}
 	a:hover{text-decoration:none;}
 	hr{margin-left:15px;
 		margin-right:65px;
@@ -55,21 +59,12 @@
 	h2{
 		color:rgba(217,77,61,1.00)}
 	
-	#info{margin-left:}
-	#info-detail{margin-top:50px;}
-	.thongtin{margin-left:15px;
-			margin-right:65px;}
-
-	
-	ul#cmt{list-style-type:none}
-	
-	li.cmt{border-bottom:solid 2px rgba(84,84,84,1.00);
-		padding:20px;
-		margin-left:-25px;
-		margin-right:60px;}
 	
 	.thumbnail{border:}
-
+	
+	.heading{border-bottom:solid 3px black;
+			position:inline;}
+	ol.breadcrumb>li>a{color:rgba(0,174,184,1.00);}
 	@media screen and (max-width: 760px) {
     ul.footer {text-align:center;
     			}
@@ -85,6 +80,16 @@
 					margin-left:1%;
 					margin-right:1px;}
 	#info{margin-left:}
+	#info-detail{margin-top:50px;}
+	.thongtin{margin-left:15px;
+			margin-right:65px;
+			}
+	ul#cmt{list-style-type:none}
+	
+	li.cmt{border-bottom:solid 2px rgba(84,84,84,1.00);
+		padding:20px;
+		margin-left:-25px;
+		margin-right:60px;}
 /*	Trang detail comment*/
 	.star{display:inline-block;}
 	input, textarea {display:block;
@@ -99,26 +104,39 @@
 		text-align:center;
 		margin-bottom:20px;
 		margin-top: 20px;}
-	.price{color:red}
-	.star{color:rgba(204,194,34,1.00);
+	.price{color:red !important;
+			margin-top:1px !important;}
+	.star{color:#f0c808;
+		border:soid black 1px;
 			}
 	.book-home{
 				display: inline-block;}
-	.heading{border-bottom:solid 3px black;}
+	
 	.book-heading{}
 	.book-detail{width:100%;
 				height:100%;
+				margin-top:20px;
 				padding-left:12px;
-				text-align:center;}
+				text-align:center;
+				display:block;}
 	.book-img{width:80%;
 			height:100%;}
-	.book-img:hover{box-shadow: 2px 2px 15px gray;}
-	.book-detail>h3>a{
-				margin-left:20px;
-				color:black;}
+	.book-img:hover{box-shadow: 2px 2px 15px gray;
+					}
+	.book-detail>h4>a{padding-bottom:-10px;
+				color:black;
+				font-weight:500;}
+	.book-detail>p{color:rgba(35,127,184,1.00);
+				opacity:0.6;
+				margin-top:-10px;
+				margin-bottom:0;
+				font-weight:600;}
 	.book-title{color:rgba(3,81,183,1.00)}
 	.book-title:hover{color:rgba(167,219,220,1.00);
 					}
+	.seeAll{float:right;
+			font-size:40%;
+			padding-top:15px;}
 	.categories-detail{
 					text-align:center;
 					margin-bottom:20px;
@@ -136,6 +154,10 @@
 							box-shadow: 2px 2px 15px gray;
 							}
 	.fa-star,.fa-star-o{width:10px;}
+	.icon{margin-top:-40px;
+		opacity:0;}
+	.icon-cart{}
+	.icon-heart{}
 /*Trang upload*/
 	#form-upload{width:80%;
 				height:100%;
@@ -200,15 +222,25 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#/">Home</a></li>
-        <li><a href="#/bookAll" >All Books</a></li>
+        <li class="dropdown">
+        	<a href="#/bookAll" class="dropdown-toggle" data-toggle="dropdown">Category</a>
+        	<span class="fa fa-caret"></span>
+        	<ul class="drop-cate dropdown-menu" role="menu">
+        		<li><a href=""> Advertising </a></li>
+        		<li><a href=""> Advertising </a></li>
+        		<li><a href=""> Advertising </a></li>
+        	</ul>
+        </li>
         <li><a href="#/bookAdd">Add New Book</a></li>
       </ul>
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      <ul class="navbar-form navbar-right">
+       <li class="btn btn-primary">
+        	<span class="fa fa-user"></span>
+        </li>
+        <li class="btn btn-primary">
+        	<span class="fa fa-shopping-cart"></span>
+        </li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
  </nav>
@@ -216,45 +248,50 @@
 <!--Home-->
 <script type="text/ng-template" id="pages/home.html">
 	<!-- Slider-->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
-	  </ol>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10"
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		  </ol>
 
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-		<div class="item active">
-		  <img src="hình/gam-7-daily-102-01.jpg" alt="Chania">
-		</div>
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			<div class="item active">
+			  <img src="hình/gam-7-daily-102-01.jpg" alt="Chania">
+			</div>
 
-		<div class="item">
-		  <img src="hình/Bookno1.jpg" alt="Chania">
-		</div>
+			<div class="item">
+			  <img src="hình/Bookno1.jpg" alt="Chania">
+			</div>
 
-		<div class="item">
-		  <img src="hình/Cover_Gam7-02.jpg" alt="Chania">
+			<div class="item">
+			  <img src="hình/Cover_Gam7-02.jpg" alt="Chania">
+			</div>
+		  </div>
+		  <!-- Left and right controls -->
+		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
 		</div>
-	  </div>
-	  <!-- Left and right controls -->
-	  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	  </a>
-	  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	  </a>
+		</div>
 	</div>
+</div>
 <br/>
 
 	<!--Content	-->
 <div class="content">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-md-3">
 				<div class="categories-wrap">
 					<div class="heading">
@@ -262,11 +299,11 @@
 					</div>
 					<div class="categories-detail">
 						<ul id="categories">
-							<li ng-click="#/bookAll"> Advertising </li>
-							<li ng-click="#/bookAll"> Marketing </li>
-							<li ng-click="#/bookAll"> Education </li>
-							<li ng-click="#/bookAll"> Kid </li>
-							<li ng-click="#/bookAll"> Literature </li>
+							<li > Advertising </li>
+							<li > Marketing </li>
+							<li > Education </li>
+							<li > Kid </li>
+							<li > Literature </li>
 						</ul>
 					</div>
 				</div>
@@ -276,27 +313,38 @@
 					</div>
 					<div class="categories-detail">
 						<ul id="categories">
-							<li ng-click="#/bookAll"> < 10$</li>
-							<li ng-click="#/bookAll"> 10$ - 20$</li>
-							<li ng-click="#/bookAll"> 20$ - 40$</li>
-							<li ng-click="#/bookAll"> 40$ - 60$</li>
-							<li ng-click="#/bookAll"> > 60$ </li>
+							<li > < 10$</li>
+							<li > 10$ - 20$</li>
+							<li > 20$ - 40$</li>
+							<li > 40$ - 60$</li>
+							<li > > 60$ </li>
 						</ul>
 					</div>
 				</div>
-
+				
 			</div>
 
 			<div class="col-md-9">
 
 						<div class="book-home">
 							<div class=" heading col-md-12 col-sm-12">    
-							<h2>New product</h2>
+							<h2>New product <a href="#/bookAll" class="seeAll">See All</a></h2>
+							
 							</div>
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -309,7 +357,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -322,7 +380,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -335,7 +403,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -345,16 +423,26 @@
 									</div>
 								</div>
 							</div>
-						</div>
 
 						<div class="book-home">
 							<div class=" heading col-md-12 col-sm-12">    
-							<h2>Best seller</h2>
+							<h2>Best Seller <a href="#/bookAll" class="seeAll">See All</a></h2>
+							
 							</div>
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -367,7 +455,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -380,7 +478,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" >
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -393,7 +501,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -403,16 +521,26 @@
 									</div>
 								</div>
 							</div>
-						</div>
 						
 						<div class="book-home">
 							<div class=" heading col-md-12 col-sm-12">    
-							<h2>Top trend</h2>
+							<h2>Related Book <a href="#/bookAll" class="seeAll">See All</a></h2>
+							
 							</div>
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -425,7 +553,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -438,7 +576,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -451,7 +599,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -461,7 +619,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
 						
 				</div>
 				</div>
@@ -473,6 +630,14 @@
 
 <!--		All Book-->
 <script type="text/ng-template" id="pages/bookAll.html">
+	<div class="container">
+		 <div class="row">
+			 <ol class="breadcrumb">
+				<li><a href="#/" >Home</a></li>
+				<li class="active">All Books</li>
+			</ol>
+		</div>
+	</div>
 	<div class="content">
 		<div class="container">
 			<div class="row" >
@@ -484,11 +649,11 @@
 					</div>
 					<div class="categories-detail">
 						<ul id="categories">
-							<li ng-click="#/bookAll"> Advertising </li>
-							<li ng-click="#/bookAll"> Marketing </li>
-							<li ng-click="#/bookAll"> Education </li>
-							<li ng-click="#/bookAll"> Kid </li>
-							<li ng-click="#/bookAll"> Literature </li>
+							<li > Advertising </li>
+							<li > Marketing </li>
+							<li > Education </li>
+							<li > Kid </li>
+							<li > Literature </li>
 						</ul>
 					</div>
 				</div>
@@ -498,26 +663,35 @@
 					</div>
 					<div class="categories-detail">
 						<ul id="categories">
-							<li ng-click="#/bookAll"> < 10$</li>
-							<li ng-click="#/bookAll"> 10$ - 20$</li>
-							<li ng-click="#/bookAll"> 20$ - 40$</li>
-							<li ng-click="#/bookAll"> 40$ - 60$</li>
-							<li ng-click="#/bookAll"> > 60$ </li>
+							<li > < 10$</li>
+							<li > 10$ - 20$</li>
+							<li > 20$ - 40$</li>
+							<li > 40$ - 60$</li>
+							<li > > 60$ </li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
-				<div class="col-md-9 col-lg-9 col-xs-9">
-
-						<div class="book-home">
+			<div class="col-md-9 col-lg-9 col-xs-9">
+					<div class="book-home">
 							<div class=" heading col-md-12 col-sm-12">    
 							<h2>All Book</h2>
 							</div>
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -530,7 +704,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -543,7 +727,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -556,7 +750,17 @@
 							<div class="col-md-3 col-sm-6 col-xs-12">
 								<div class="book">	
 									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										<a href="#/bookDetail">
+											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+										</a>
+										<div class="icon">
+										<button class="btn btn-primary icon-cart" type="button">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<button class="btn btn-danger icon-heart" type="button">
+											<i class="fa fa-heart"></i>
+										</button>
+										</div>
 									</div>
 									<div class="book-detail">
 										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
@@ -566,112 +770,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img" ng-click="#/bookDetail">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						
+
+								
 			</div>
 		</div>
 	</div>
@@ -679,6 +779,15 @@
 	
 <!--Book in detail-->
 <script type="text/ng-template" id="pages/bookDetail.html">
+<div class="container">
+	 <div class="row">
+		 <ol class="breadcrumb">
+			<li><a href="#/" >Home</a></li>
+			<li><a href="#/bookAll" >All Books</a></li>
+			<li class="active">Detail</li>
+		</ol>
+	</div>
+</div>
 <div class="content">
 	<div class="container">
 		<div class="row">
@@ -689,11 +798,11 @@
 					</div>
 					<div class="categories-detail">
 						<ul id="categories">
-							<li ng-click="#/bookAll"> Advertising </li>
-							<li ng-click="#/bookAll"> Marketing </li>
-							<li ng-click="#/bookAll"> Education </li>
-							<li ng-click="#/bookAll"> Kid </li>
-							<li ng-click="#/bookAll"> Literature </li>
+							<li > Advertising </li>
+							<li > Marketing </li>
+							<li > Education </li>
+							<li > Kid </li>
+							<li > Literature </li>
 						</ul>
 					</div>
 				</div>
@@ -703,74 +812,89 @@
 					</div>
 					<div class="categories-detail">
 						<ul id="categories">
-							<li ng-click="#/bookAll"> < 10$</li>
-							<li ng-click="#/bookAll"> 10$ - 20$</li>
-							<li ng-click="#/bookAll"> 20$ - 40$</li>
-							<li ng-click="#/bookAll"> 40$ - 60$</li>
-							<li ng-click="#/bookAll"> > 60$ </li>
+							<li > < 10$</li>
+							<li > 10$ - 20$</li>
+							<li > 20$ - 40$</li>
+							<li > 40$ - 60$</li>
+							<li > > 60$ </li>
 						</ul>
 					</div>
 				</div>
 
 			</div>
+			<div class="col-md-9">
+				<div class="col-md-6">
+					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail">
+					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
+					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
+					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
+				</div>
+				<div class="col-md-6" id="info">
+					<h3> GAM7 Book No 2: Saturation - Điểm Bão Hòa</h3>
+					<p> Gam 7</p>
+					<div class="star"> </div> <p> (1 đánh giá) </p>
+					<p class="price">$75.00</p>
+					<button type="button">Mua</button>
+				</div>
 
-			<div class="col-md-4">
-				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail">
-				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-				<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
+				<div class="col-md-12" id="info-detail">
+					<div class="heading ">
+						<h2>Thông tin </h2>
+					</div>
+					<div>
+					<h5 class="thongtin">GAM7 Book No 2: Saturation - Điểm Bão Hòa</h5>
+					<br/>
+					<p class="thongtin">
+					GAM7 là ấn bản chuyên ngành dành riêng cho thế hệ Marketer năng động tại Việt Nam, phát hành bởi RIO Creative với sự đồng hành về nội dung và truyền thông từ Brands Vietnam cùng RGB.vn - Cộng đồng Sáng tạo Việt Nam.
+					<br/><br/>
+
+					Ấn phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo.<br/><br/>
+
+					Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Huỳnh Vĩnh Sơn, Hồ Công Hoài Phương, Nguyễn Quang Hiệp, Leo Đinh, Hoàng Nguyễn, Nguyễn Thành Long, Đặng Thuý Hà, Nguyễn Tiến Huy, Phạm Minh Toàn, Trần Quốc Hiệp, Nguyễn Minh Ngọc, RGB, Tomorrow Marketer, chắc chắn sẽ giúp bạn có thêm kiến thức cũng như cảm hứng trên con đường Marketing.</p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="heading">
+						<h2>Comment</h2>
+					</div>
+					<div>
+						<ul id="cmt">
+							<li class="cmt"> 
+							 "Đây quả là một cuốn sách hay, các bạn nên  tìm hiểu và tìm đọc"
+							 <cite>- <b>Pete Nguyen</b> <div class="star"> </div></cite>
+							</li>
+						 </ul>
+					 </div>
+					 <div>
+						 <form name="" ng-submit="" novalidate style="margin-top:40px">
+						 <h4 class="thongtin">Add Comment</h4>
+						 <textarea  cols="30" rows="10" required></textarea>
+						 <label for="" class="thongtin">by:</label>
+						 <input type="text"  required placeholder="Name" />
+						 <br/>
+						 <div class="thongtin">
+							<label>Gửi đánh giá: </label> <div class="star"> </div>
+						 </div>
+						 <br/>
+						 <input type="submit" value="Submit" style="width:10%" />
+						 </form>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-5" id="info">
-				<h3> GAM7 Book No 2: Saturation - Điểm Bão Hòa</h3>
-				<p> Gam 7</p>
-				<div class="star"> </div> <p> (1 đánh giá) </p>
-				<p class="price">$75.00</p>
-				<button type="button">Mua</button>
-			</div>
 		</div>
-		
-		<div class="row" id="info-detail">
-			<h2>Thông tin</h2>
-			<hr/>
-			<h5 class="thongtin">GAM7 Book No 2: Saturation - Điểm Bão Hòa</h5>
-			<br/>
-			<p class="thongtin">GAM7 là ấn bản chuyên ngành dành riêng cho thế hệ Marketer năng động tại Việt Nam, phát hành bởi RIO Creative với sự đồng hành về nội dung và truyền thông từ Brands Vietnam cùng RGB.vn - Cộng đồng Sáng tạo Việt Nam.<br/><br/>
-
-Ấn phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo.<br/><br/>
-
-Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Huỳnh Vĩnh Sơn, Hồ Công Hoài Phương, Nguyễn Quang Hiệp, Leo Đinh, Hoàng Nguyễn, Nguyễn Thành Long, Đặng Thuý Hà, Nguyễn Tiến Huy, Phạm Minh Toàn, Trần Quốc Hiệp, Nguyễn Minh Ngọc, RGB, Tomorrow Marketer, chắc chắn sẽ giúp bạn có thêm kiến thức cũng như cảm hứng trên con đường Marketing.</p>
-		</div>
-		
-		<br/>
-		<div class="row">
-			<h2>Comment</h2>
-			<hr/>
-			<ul id="cmt">
-            	<li class="cmt"> 
-                 "Đây quả là một cuốn sách hay, các bạn nên  tìm hiểu và tìm đọc"
-                 <cite>- <b>Pete Nguyen</b> <div class="star"> </div></cite>
-                </li>
-             </ul>
-                
-             <form name="" ng-submit="" novalidate style="margin-top:40px">
-             <h4 class="thongtin">Add Comment</h4>
-             <textarea  cols="30" rows="10" required></textarea>
-             <label for="" class="thongtin">by:</label>
-             <input type="text"  required placeholder="Name" />
-			 <br/>
-             <div class="thongtin">
-             	<label>Gửi đánh giá: </label> <div class="star"> </div>
-             </div>
-             <br/>
-             <input type="submit" value="Submit" style="width:10%" />
-             </form>
-		</div>
-		<br/><br/>
 	</div>
 </div>
 </script>
 	<!--	Add new book-->
 <script type="text/ng-template" id="pages/bookAdd.html">
+<div class="container">
+	 <div class="row">
+		 <ol class="breadcrumb">
+			<li><a href="#/" >Home</a></li>
+			<li class="active">Admin</li>
+		</ol>
+	</div>
+</div>
 <div class="content">
 	<div class="container">
 	<div class="row" id="form-upload"> 
@@ -907,7 +1031,25 @@ app.controller('BookAddController', function($scope) {
 app.controller('BookDetailController', function($scope) {
 });
 	
-jQuery.noConflict();	
+jQuery.noConflict();
+jQuery(document).ready(function(){
+
+//Icon Cart 
+	
+	jQuery('.book-heading').on({
+        mouseenter: function(){
+            jQuery(this).children("div").animate({
+				opacity:1
+			});
+        },  
+        mouseleave: function(){
+             jQuery(this).children("div").animate({
+				opacity:0
+			});
+        }, 
+		
+    });
+	
 //	Rating Star
 	jQuery(document).ready(function(){
 		jQuery('.star').raty({ score: 3 });
@@ -922,5 +1064,6 @@ jQuery.noConflict();
 	jQuery(document).on("click",".removeImg",function(){
 			jQuery(this).parent("div").remove();
 		});
+});
 </script>
 </html>
