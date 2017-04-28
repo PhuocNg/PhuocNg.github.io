@@ -40,18 +40,19 @@
 	.navbar-brand:hover{color:white;}
 	ul.drop-cate{position:absolute;
 				display:none;
-				margin-top:-20px !important;}
-	.dropdown:hover ul.dropdown-cate{display:block !important;
-									position:absolute;}					
+				margin-top:-20px !important;
+				padding-top:0px;
+				padding-bottom:0px;}
+					
 	.dropdown{margin-bottom:-20px;
 				}
-	.open>a:hover {background-color:none;}
-	ul.drop-cate>li{font-weight:500;
-					}
-	ul.drop-cate>li:hover{background-color:rgba(255,78,0,1.00);
-							color:white;
-							box-shadow: 2px 2px 15px gray;
-							}
+	
+	ul.drop-cate>li>a{font-weight:500;
+						color:#666;
+						padding:10px;
+						}
+	ul.drop-cate>li>a:hover{color:white;
+							background-color:black;}
 /*	Carousel*/
 	#myCarousel{
 				width:80%;
@@ -61,14 +62,17 @@
 								width:100%}
 /*   General*/
 	body{background-color:;}
-	p{}
+	p.author{color:rgba(35,127,184,1.00);
+			opacity:0.6;
+			font-weight:600;}
+	a{color:black;}
 	a:hover{text-decoration:none;}
 	hr{margin-left:15px;
 		margin-right:65px;
 		border-top: 5px solid black;}
 	h2{
 		color:rgba(217,77,61,1.00)}
-	
+	.btn:focus{border:0px;}
 	
 	.thumbnail{border:}
 	
@@ -124,6 +128,7 @@
 	
 	.book-heading{position:relative;}
 	.book-heading:hover .icon{opacity:1;}
+	
 	.book-detail{width:100%;
 				height:100%;
 				margin-top:20px;
@@ -132,7 +137,6 @@
 				display:block;}
 	.book-img{width:150px;
 			height:250px;}
-	.book
 	.book-img:hover{box-shadow: 2px 2px 15px gray;
 					}
 	.book-detail>h4>a{padding-bottom:-10px;
@@ -159,14 +163,26 @@
 	#categories{list-style-type: none;}
 	ul#categories>li{text-align:center;
 					font-weight:500;
-					 margin-left:-35px;
+					margin-left:-35px;
+					margin-bottom:5px;
 					 padding-top:5px;
 					 padding-bottom:5px;
 					}
 	ul#categories>li:hover{background-color:rgba(255,78,0,1.00);
-							color:white;
 							box-shadow: 2px 2px 15px gray;
 							}
+	ul#categories>li:hover a {color:white;}
+	ul#categories>li>a {position:relative;
+						display:block;}
+	ul#categories>li>a:focus {
+							color:white;
+							text-decoration:none;
+							padding-top:5px;
+					 		padding-bottom:5px;
+							margin-top:-3px;
+							margin-bottom:-3px;
+							background-color:rgba(255,78,0,1.00);
+							box-shadow: 2px 2px 15px gray;}
 	.fa-star,.fa-star-o{width:10px;}
 	.icon{margin-top:-40px;
 			position:absolute;
@@ -240,10 +256,10 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#/">Home</a></li>
         <li class="dropdown">
-        	<a href="#/bookAll" class="dropdown-toggle" data-toggle="dropdown">Category</a>
+        	<a href="" class="dropdown-toggle" data-toggle="dropdown">Category</a>
         	<span class="fa fa-caret"></span>
         	<ul class="drop-cate dropdown-menu" role="menu" >
-        		<li ng-repeat="category in genres"><a href=""> {{category.name}} </a></li>
+        		<li ng-repeat="category in genres"><a href="#/bookAll"> {{category.name}} </a></li>
         	</ul>
         </li>
         <li><a href="#/bookAdd">Add New Book</a></li>
@@ -307,82 +323,129 @@
 <div class="content" ng-controller="HomeController">
 	<div class="container">
 		<div class="row">
+			
 			<div class="col-md-3 col-sm-0 col-xs-0">
 				<div class="categories-wrap">
 					<div class="heading">
 						<h2>Categories</h2>
 					</div>
 					<div class="categories-detail" ng-controller="CategorylController">
-						<ul id="categories" ng-repeat="category in genres">
-							<li>{{category.name}}</li>
+						<ul id="categories">
+							<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
 						</ul>
 					</div>
 				</div>
-				
-				
 			</div>
 
 			<div class="col-md-9">
-						<div class="book-home">
-							<div class=" heading col-md-12 col-sm-12">    
-							<h2>New product <a href="#/bookAll" class="seeAll">See All</a></h2>
-							</div>
+				<div class="book-home">
+					<div class=" heading col-md-12 col-sm-12">    
+						<h2>New product <a href="#/bookAll" class="seeAll">See All</a></h2>
+					</div>
 
-							<div class="col-md-3 col-sm-6 col-xs-12"  >
-								<div class="book">	
-									<div class="book-heading">
-										<a href="#/bookDetail">
-											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-										</a>
-										<div class="icon">
-										<button class="btn btn-primary icon-cart" type="button">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button class="btn btn-danger icon-heart" type="button">
-											<i class="fa fa-heart"></i>
-										</button>
-										</div>
-									</div>
-									<div class="book-detail">
-										<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
+					<div class="col-md-3 col-sm-6 col-xs-12"  >
+						<div class="book">	
+							<div class="book-heading">
+								<a href="#/bookDetail">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+								</a>
+								<div class="icon">
+									<button class="btn btn-primary icon-cart" type="button">
+										<i class="fa fa-shopping-cart"></i>
+									</button>
+									<button class="btn btn-danger icon-heart" type="button">
+										<i class="fa fa-heart"></i>
+									</button>
 								</div>
 							</div>
-
-							<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
-								<div class="book">	
-									<div class="book-heading">
-										<a href="#/bookDetail">
-											<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
-										</a>
-										<div class="icon">
-										<button class="btn btn-primary icon-cart" type="button">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button class="btn btn-danger icon-heart" type="button">
-											<i class="fa fa-heart"></i>
-										</button>
-										</div>
-									</div>
-									<div class="book-detail">
-										<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
-										<p> {{book.author}}</p>
-										<div class="star"></div> 
-										<p class="price">${{book.sellingPrice}}</p>
-									</div>
-								</div>
+							<div class="book-detail">
+								<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
+								<p> Gam 7</p>
+								<div class="star"></div> 
+								<p class="price">$75.00</p>
 							</div>
-
 						</div>
+					</div>
 
-						
+					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
+						<div class="book">	
+							<div class="book-heading">
+								<a href="#/bookDetail">
+									<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
+								</a>
+								<div class="icon">
+									<button class="btn btn-primary icon-cart" type="button">
+										<i class="fa fa-shopping-cart"></i>
+									</button>
+									<button class="btn btn-danger icon-heart" type="button">
+										<i class="fa fa-heart"></i>
+									</button>
+								</div>
+							</div>
+							<div class="book-detail">
+								<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
+								<p> {{book.author}}</p>
+								<div class="star"></div> 
+								<p class="price">{{book.sellingPrice|number}} đ </p>
+							</div>
+						</div>
+					</div>
+				
+				<div class="book-home">
+					<div class=" heading col-md-12 col-sm-12">    
+						<h2>Best Seller <a href="#/bookAll" class="seeAll">See All</a></h2>
+					</div>
 
+					<div class="col-md-3 col-sm-6 col-xs-12"  >
+						<div class="book">	
+							<div class="book-heading">
+								<a href="#/bookDetail">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+								</a>
+								<div class="icon">
+									<button class="btn btn-primary icon-cart" type="button">
+										<i class="fa fa-shopping-cart"></i>
+									</button>
+									<button class="btn btn-danger icon-heart" type="button">
+										<i class="fa fa-heart"></i>
+									</button>
+								</div>
+							</div>
+							<div class="book-detail">
+								<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
+								<p> Gam 7</p>
+								<div class="star"></div> 
+								<p class="price">$75.00</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
+						<div class="book">	
+							<div class="book-heading">
+								<a href="#/bookDetail">
+									<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
+								</a>
+								<div class="icon">
+									<button class="btn btn-primary icon-cart" type="button">
+										<i class="fa fa-shopping-cart"></i>
+									</button>
+									<button class="btn btn-danger icon-heart" type="button">
+										<i class="fa fa-heart"></i>
+									</button>
+								</div>
+							</div>
+							<div class="book-detail">
+								<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
+								<p> {{book.author}}</p>
+								<div class="star"></div> 
+								<p class="price">{{book.sellingPrice|number}} đ </p>
+							</div>
+						</div>
+					</div>
+					
 				</div>
-				</div>
-			</div>
+			</div>	
 		</div>
 	</div>
 </div>
@@ -402,122 +465,73 @@
 		<div class="container">
 			<div class="row" >
 			
-			<div class="col-md-3">
+			<div class="col-md-3 col-sm-0 col-xs-0">
 				<div class="categories-wrap">
 					<div class="heading">
 						<h2>Categories</h2>
 					</div>
-					<div class="categories-detail">
+					<div class="categories-detail" ng-controller="CategorylController">
 						<ul id="categories">
-							<li > Advertising </li>
-							<li > Marketing </li>
-							<li > Education </li>
-							<li > Kid </li>
-							<li > Literature </li>
+							<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			
+			<div class="col-md-9">
+				<div class="book-home">
+					<div class=" heading col-md-12 col-sm-12">    
+						<h2>All Books <a href="#/bookAll" class="seeAll">See All</a></h2>
+					</div>
 
-			<div class="col-md-9 col-lg-9 col-xs-9">
-					<div class="book-home">
-							<div class=" heading col-md-12 col-sm-12">    
-							<h2>All Book</h2>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-										<a href="#/bookDetail">
-											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-										</a>
-										<div class="icon">
-										<button class="btn btn-primary icon-cart" type="button">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button class="btn btn-danger icon-heart" type="button">
-											<i class="fa fa-heart"></i>
-										</button>
-										</div>
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
+					<div class="col-md-3 col-sm-6 col-xs-12"  >
+						<div class="book">	
+							<div class="book-heading">
+								<a href="#/bookDetail">
+									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
+								</a>
+								<div class="icon">
+									<button class="btn btn-primary icon-cart" type="button">
+										<i class="fa fa-shopping-cart"></i>
+									</button>
+									<button class="btn btn-danger icon-heart" type="button">
+										<i class="fa fa-heart"></i>
+									</button>
 								</div>
 							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-										<a href="#/bookDetail">
-											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-										</a>
-										<div class="icon">
-										<button class="btn btn-primary icon-cart" type="button">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button class="btn btn-danger icon-heart" type="button">
-											<i class="fa fa-heart"></i>
-										</button>
-										</div>
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
+							<div class="book-detail">
+								<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
+								<p> Gam 7</p>
+								<div class="star"></div> 
+								<p class="price">$75.00</p>
 							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-										<a href="#/bookDetail">
-											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-										</a>
-										<div class="icon">
-										<button class="btn btn-primary icon-cart" type="button">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button class="btn btn-danger icon-heart" type="button">
-											<i class="fa fa-heart"></i>
-										</button>
-										</div>
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6 col-xs-12">
-								<div class="book">	
-									<div class="book-heading">
-										<a href="#/bookDetail">
-											<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-										</a>
-										<div class="icon">
-										<button class="btn btn-primary icon-cart" type="button">
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-										<button class="btn btn-danger icon-heart" type="button">
-											<i class="fa fa-heart"></i>
-										</button>
-										</div>
-									</div>
-									<div class="book-detail">
-										<h4><a href="#/bookDetail" class="book-title"> Viral Book</a></h4>
-										<p> Gam 7</p>
-										<div class="star"></div> 
-										<p class="price">$75.00</p>
-									</div>
-								</div>
-							</div>
+						</div>
+					</div>
 
-								
+					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
+						<div class="book">	
+							<div class="book-heading">
+								<a href="#/bookDetail">
+									<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
+								</a>
+								<div class="icon">
+									<button class="btn btn-primary icon-cart" type="button">
+										<i class="fa fa-shopping-cart"></i>
+									</button>
+									<button class="btn btn-danger icon-heart" type="button">
+										<i class="fa fa-heart"></i>
+									</button>
+								</div>
+							</div>
+							<div class="book-detail">
+								<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
+								<p> {{book.author}}</p>
+								<div class="star"></div> 
+								<p class="price">{{book.sellingPrice|number}} đ </p>
+							</div>
+						</div>
+					</div>
+					
 			</div>
 		</div>
 	</div>
@@ -537,23 +551,20 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
-		<div class="col-md-3">
-				<div class="categories-wrap">
-					<div class="heading">
-						<h2>Categories</h2>
-					</div>
-					<div class="categories-detail">
-						<ul id="categories">
-							<li > Advertising </li>
-							<li > Marketing </li>
-							<li > Education </li>
-							<li > Kid </li>
-							<li > Literature </li>
-						</ul>
+		
+			<div class="col-md-3 col-sm-0 col-xs-0">
+					<div class="categories-wrap">
+						<div class="heading">
+							<h2>Categories</h2>
+						</div>
+						<div class="categories-detail" ng-controller="CategorylController">
+							<ul id="categories">
+								<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
-
-			</div>
+			
 			<div class="col-md-9">
 				<div class="col-md-6">
 					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail">
@@ -564,7 +575,7 @@
 				<div class="col-md-6" id="info">
 					<div>
 						<h3> GAM7 Book No 2: Saturation - Điểm Bão Hòa</h3>
-						<p> Gam 7</p>
+						<p class="author"> Gam 7</p>
 					</div>
 					<div>
 						<p>An phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo</p>
@@ -655,6 +666,92 @@
 		
 	</div>	
 </div>
+</div>
+<div class="panel panel-default ng-scope">
+    <div class="panel-heading">
+        <h3 class="panel-title">Add Book</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form ng-submit="addBook()" class="ng-pristine ng-invalid ng-invalid-required">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.title" placeholder="Title">
+                    </div>
+                    <div class="form-group" ng-init="getGenres()">
+                        <label>Genre</label>
+                        <select ng-model="book.genre" ng-required="true" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-options="genre as genre.name for genre in genres" required="required"><option value="?" selected="selected"></option><option label="Sách Ngoại Văn" value="object:38">Sách Ngoại Văn</option><option label="Sách Kinh Tế" value="object:39">Sách Kinh Tế</option><option label="Sách Văn Học Trong Nước" value="object:40">Sách Văn Học Trong Nước</option><option label="Sách Văn Học Nước Ngoài" value="object:41">Sách Văn Học Nước Ngoài</option><option label="Sách Thường Thức Đời Sống" value="object:42">Sách Thường Thức Đời Sống</option><option label="Sách Thiếu Nhi" value="object:43">Sách Thiếu Nhi</option><option label="Sách Phát Triển Bản Thân" value="object:44">Sách Phát Triển Bản Thân</option><option label="Sách Tin Học - Ngoại Ngữ" value="object:45">Sách Tin Học - Ngoại Ngữ</option><option label="Sách Chuyên Ngành" value="object:46">Sách Chuyên Ngành</option><option label="Sách Giáo Khoa Giáo Trình" value="object:47">Sách Giáo Khoa Giáo Trình</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.author" placeholder="Author">
+                    </div>
+                    <div class="form-group">
+                        <label>Publisher</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.publisher" placeholder="Publisher">
+                    </div>
+                    <div class="form-group">
+                        <label>Pages</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.pages" placeholder="Pages">
+                    </div>
+                    <div class="form-group">
+                        <label>Weight</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.weight" placeholder="Weight">
+                    </div>
+                    <div class="form-group">
+                        <label>Width</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.width" placeholder="Width">
+                    </div>
+                    <div class="form-group">
+                        <label>Depth</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.depth" placeholder="Depth">
+                    </div>
+                    <div class="form-group">
+                        <label>Release Date</label>
+                        <input type="datetime" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.releaseDate" placeholder="Release Date">
+                    </div>
+                    <div class="form-group">
+                        <label>Short Description</label>
+                        <textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.shortDescription" placeholder="Short Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Description</label>
+                        <textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.fullDescription" placeholder="Full Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Main Image</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.main" placeholder="Main Image">
+                    </div>
+                    <div class="form-group">
+                        <label>First Image</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.first" placeholder="Main Image">
+                    </div>
+                    <div class="form-group">
+                        <label>Second Image</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.second" placeholder="Second Image">
+                    </div>
+                    <div class="form-group">
+                        <label>Sku</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.sku" placeholder="Sku">
+                    </div>
+                    <div class="form-group">
+                        <label>Revious Price</label>
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.previousPrice" placeholder="Revious Price">
+                    </div>
+                    <div class="form-group">
+                        <label>Selling Price</label>
+                        <input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.sellingPrice" placeholder="Selling Price">
+                    </div>
+                    <div class="form-group">
+                        <label>Create Date</label>
+                        <input type="datetime" class="form-control ng-pristine ng-untouched ng-valid" ng-model="CreateDate" placeholder="Crea Date">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </script>
 
@@ -789,7 +886,7 @@ app.controller('CategorylController', function($scope, $http) {
 jQuery.noConflict();
 jQuery(document).ready(function(){
 
-//Icon Cart 
+//General
 	
 	
 //	Rating Star
