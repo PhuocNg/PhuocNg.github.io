@@ -14,7 +14,7 @@
 
 <!--Angular JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
 
 <!--UI Boostrap-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
@@ -24,226 +24,12 @@
 <link href="https://netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.css" rel="stylesheet">
 <script src="jQuery Raty/demo/javascripts/demo.js"></script>
 <script src="jQuery Raty/lib/jquery.raty-fa.js"></script>
-
-<style>
-/*	Navbar*/
-	.navbar{border-radius:0px;
-			background-color:rgba(30,33,40,1.00);
-			}
-	ul.navbar-nav{}
-	ul.navbar-nav>li>a{color:#666;}
-	ul.navbar-nav>li>a:hover{background: black;
-							color:white;}
-	ul.navbar-nav>li>a:focus{background: black !important;
-							color:white !important;}
-	.navbar-brand{color:white}
-	.navbar-brand:hover{color:white;}
-	ul.drop-cate{position:absolute;
-				display:none;
-				margin-top:-20px !important;
-				padding-top:0px;
-				padding-bottom:0px;}
-					
-	.dropdown{margin-bottom:-20px;
-				}
-	
-	ul.drop-cate>li>a{font-weight:500;
-						color:#666;
-						padding:10px;
-						}
-	ul.drop-cate>li>a:hover{color:white;
-							background-color:black;}
-/*	Carousel*/
-	#myCarousel{
-				width:80%;
-				height:100%;
-				margin-left:10%}
-	.carousel-inner>.item>img{height:500px;
-								width:100%}
-/*   General*/
-	body{background-color:;}
-	p.author{color:rgba(35,127,184,1.00);
-			opacity:0.6;
-			font-weight:600;}
-	a{color:black;}
-	a:hover{text-decoration:none;}
-	hr{margin-left:15px;
-		margin-right:65px;
-		border-top: 5px solid black;}
-	h2{
-		color:rgba(217,77,61,1.00)}
-	.btn:focus{border:0px;}
-	
-	.thumbnail{border:}
-	
-	.heading{border-bottom:solid 3px black;
-			position:inline;}
-	ol.breadcrumb>li>a{color:rgba(0,174,184,1.00);}
-	@media screen and (max-width: 991px) {
-	.categories-wrap{display:none;}
-    ul.footer {text-align:center;
-    			}
-    h5.footer-title{text-align:center;
-    			}
-	}
-/*	Trang detail*/
-	img.pic-detail{width:100%;
-					height:100%}
-	img.pic-detail-more{width:30%;
-					height:30%;
-					margin-top:20px;
-					margin-left:1%;
-					margin-right:1px;}
-	#info{margin-left:}
-	#info-detail{margin-top:50px;}
-	.thongtin{margin-left:15px;
-			margin-right:65px;
-			}
-	ul#cmt{list-style-type:none}
-	
-	li.cmt{border-bottom:solid 2px rgba(84,84,84,1.00);
-		padding:20px;
-		margin-left:-25px;
-		margin-right:60px;}
-/*	Trang detail comment*/
-	.star{display:inline-block;}
-	input, textarea {display:block;
-  				width:94%;
-  				padding:10px;
-  				font-size:1.1em;
-				margin-left:15px;
-				margin-right:65px;}
-	
-/*Book trang Home*/
-	.book{
-		text-align:center;
-		margin-bottom:20px;
-		margin-top: 20px;}
-	.price{color:red !important;
-			margin-top:1px !important;}
-	.star{color:#f0c808;
-		border:soid black 1px;
-			}
-	.book-home{}
-	
-	.book-heading{position:relative;}
-	.book-heading:hover .icon{opacity:1;}
-	
-	.book-detail{width:100%;
-				height:100%;
-				margin-top:20px;
-				padding-left:12px;
-				text-align:center;
-				display:block;}
-	.book-img{width:150px;
-			height:250px;}
-	.book-img:hover{box-shadow: 2px 2px 15px gray;
-					}
-	.book-detail>h4>a{padding-bottom:-10px;
-				color:black;
-				font-weight:500;}
-	.book-detail>p{color:rgba(35,127,184,1.00);
-				opacity:0.6;
-				margin-top:-10px;
-				margin-bottom:0;
-				font-weight:600;}
-	.book-title{color:rgba(3,81,183,1.00);
-				line-height: 18px;
-				height:54px;}
-	.book-title>a:hover{color:rgba(167,219,220,1.00);
-					}
-	.seeAll{float:right;
-			font-size:40%;
-			padding-top:15px;}
-	.categories-detail{
-					text-align:center;
-					margin-bottom:20px;
-					margin-top: 20px;}
-	.categories-wrap{}
-	#categories{list-style-type: none;}
-	ul#categories>li{text-align:center;
-					font-weight:500;
-					margin-left:-35px;
-					margin-bottom:5px;
-					 padding-top:5px;
-					 padding-bottom:5px;
-					}
-	ul#categories>li:hover{background-color:rgba(255,78,0,1.00);
-							box-shadow: 2px 2px 15px gray;
-							}
-	ul#categories>li:hover a {color:white;}
-	ul#categories>li>a {position:relative;
-						display:block;}
-	ul#categories>li>a:focus {
-							color:white;
-							text-decoration:none;
-							padding-top:5px;
-					 		padding-bottom:5px;
-							margin-top:-3px;
-							margin-bottom:-3px;
-							background-color:rgba(255,78,0,1.00);
-							box-shadow: 2px 2px 15px gray;}
-	.fa-star,.fa-star-o{width:10px;}
-	.icon{margin-top:-40px;
-			position:absolute;
-			opacity:0;
-			margin-left:50px;
-			transition: opacity .5s ease;}
-	.icon-cart{}
-	.icon-heart{}
-/*Trang upload*/
-	#form-upload{width:80%;
-				height:100%;
-				background-color: rgba(224,228,204,1.00);
-				background-image:url(hình/b7eacb70d6189560890b29ef3cac40e9.png);
-				background-repeat: no-repeat;
-				background-size:40%;
-				background-position:left bottom;
-				text-align: center;
-				border: 5px rgba(0,169,181,1.00) solid;
-				border-radius: 15px 70px;
-				padding:20px 5px 20px 5px;
-				margin-left:10%;
-				margin-top: 5%;}
-	div#form-upload.row>span.badge{margin-top: -70px;
-									background-color:rgba(167,219,218,1.00);
-									color:rgba(249,105,0,1.00);
-									font-weight:600;
-									font-size:2em;
-									border-radius:2px;
-									padding:10px 20px;}
-	div#form-upload.row>h4{color:rgba(243,134,48,1.00)}
-	div#form-upload.row>input{width:50%;
-							margin-left:25%;}
-/*Footer*/
-	footer{padding:85px 20px 85px 20px;
-			background-color:rgba(30,33,40,1.00);
-			color:white;
-			margin-top:30px;}
-	ul.footer{
-			font-weight:normal;
-			list-style-type: none;
-			margin-left: -40px;
-			line-height:250%;}
-	ul.footer>li>a{color:#666;}
-	ul.footer>li>a:hover{color:white;
-						text-decoration: none;}
-	#footer-logo{text-align: center;}
-	div.social-link>a{color:#9a9c9f;
-						background: black;
-						width: 32px;
-						height: 32px;
-						padding:5px;
-						text-align:center;
-						margin:0 5px 5px 0;
-						font-size:18px;}
-	div.social-link>a:hover{color:white;
-							text-decoration: none;}
-</style>
-
+<!--CSS-->
+<link rel="stylesheet" type="text/css" href="book.css">
 </head>
 
 <body ng-app="myApp">
+
  <nav class="navbar navbar-focus">
   <div class="container-fluid" >
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -254,508 +40,72 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" ng-controller="CategorylController">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#/">Home</a></li>
-        <li class="dropdown">
-        	<a href="" class="dropdown-toggle" data-toggle="dropdown">Category</a>
-        	<span class="fa fa-caret"></span>
-        	<ul class="drop-cate dropdown-menu" role="menu" >
-        		<li ng-repeat="category in genres"><a href="#/bookAll"> {{category.name}} </a></li>
-        	</ul>
-        </li>
-        <li><a href="#/bookAdd">Add New Book</a></li>
+		  <li class="active"><a href="#/">TRANG CHỦ</a></li>
+		  <li class="dropdown">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown">DANH MỤC <span class="fa fa-caret-down"></span> </a>
+			<ul class="drop-cate dropdown-menu" role="menu" >
+				<li ng-repeat="category in genres"><a href="#/bookAll"> {{category.name}} </a></li>
+			</ul>
+		  </li>
       </ul>
-      <ul class="navbar-form navbar-right">
-       <li class="btn btn-primary">
-        	<span class="fa fa-user"></span>
-        </li>
-        <li class="btn btn-primary">
-        	<span class="fa fa-shopping-cart"></span>
-        </li>
+      <ul class="nav nav-bar navbar-right" ng-controller="HomeController">
+		  <li class="dropdown drop-right">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-shopping-cart" style="padding-right:2px"></span>GIỎ HÀNG <i>(0)</i> <span class="fa fa-caret-down"></span></a>
+			<ul class="drop-cate dropdown-menu" role="menu" >
+				<li class="drop-cart">
+					<span>
+                    	<span class="drop-cart-left">
+                        	<img src="{{book.images.main}}" alt="">
+                            <span class="drop-cart-info">
+                            	<span class="drop-cart-info-name">Toi thay hoa vang tren co xanh</span>
+                            	<span>23$</span>
+                            </span>
+                    	 </span>
+                    	 <span class="drop-cart-right">
+                        	<input class="drop-cart-form-control" type="number" min="1" value="1">
+                         	<span class="btn btn-xs btn-danger pull-right remove">
+                         		<i class="fa fa-close"></i>
+                         	</span>
+                     	 </span>
+                    </span>
+				</li>
+				<li class="drop-cart">
+					<span>
+                    	<span class="drop-cart-left">
+                        	<img src="{{book.images.main}}" alt="">
+                            <span class="drop-cart-info">
+                            	<span class="drop-cart-info-name">Item name</span>
+                            	<span>23$</span>
+                            </span>
+                    	 </span>
+                    	 <span class="drop-cart-right">
+                        	<input class="drop-cart-form-control" type="number" min="1" value="1">
+                         	<span class="btn btn-xs btn-danger pull-right remove">
+                         		<i class="fa fa-close"></i>
+                         	</span>
+                     	 </span>
+                    </span>
+				</li>
+				<li class="divider"></li>
+				<li class="drop-cart-footer">
+					<a href="#/Cart">THANH TOÁN</a>
+				</li>
+			</ul>
+		  </li>
+		  <li class="dropdown drop-right">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user" style="padding-right:2px"></span>TÀI KHOẢN</a>
+			<ul class="drop-cate dropdown-menu" role="menu" >
+				<li><a href="#/bookAdd">Admin</a></li>
+				<li><a href="#/">Đăng Nhập</a></li>
+				<li><a href="#/">Thông Tin Tài Khoản</a></li>
+			</ul>
+		  </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
  </nav>
  
-<!--Home-->
-<script type="text/ng-template" id="pages/home.html">
-	<!-- Slider-->
-<div class="container" >
-	<div class="row">
-		<div class="col-xs-10"
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		  </ol>
-
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-			<div class="item active">
-			  <img src="hình/gam-7-daily-102-01.jpg" alt="Chania">
-			</div>
-
-			<div class="item">
-			  <img src="hình/Bookno1.jpg" alt="Chania">
-			</div>
-
-			<div class="item">
-			  <img src="hình/Cover_Gam7-02.jpg" alt="Chania">
-			</div>
-		  </div>
-		  <!-- Left and right controls -->
-		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		  </a>
-		</div>
-		</div>
-	</div>
-</div>
-<br/>
-
-	<!--Content	-->
-<div class="content" ng-controller="HomeController">
-	<div class="container">
-		<div class="row">
-			
-			<div class="col-md-3 col-sm-0 col-xs-0">
-				<div class="categories-wrap">
-					<div class="heading">
-						<h2>Categories</h2>
-					</div>
-					<div class="categories-detail" ng-controller="CategorylController">
-						<ul id="categories">
-							<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-9">
-				<div class="book-home">
-					<div class=" heading col-md-12 col-sm-12">    
-						<h2>New product <a href="#/bookAll" class="seeAll">See All</a></h2>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12"  >
-						<div class="book">	
-							<div class="book-heading">
-								<a href="#/bookDetail">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-								</a>
-								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
-										<i class="fa fa-shopping-cart"></i>
-									</button>
-									<button class="btn btn-danger icon-heart" type="button">
-										<i class="fa fa-heart"></i>
-									</button>
-								</div>
-							</div>
-							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
-								<p> Gam 7</p>
-								<div class="star"></div> 
-								<p class="price">$75.00</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
-						<div class="book">	
-							<div class="book-heading">
-								<a href="#/bookDetail">
-									<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
-								</a>
-								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
-										<i class="fa fa-shopping-cart"></i>
-									</button>
-									<button class="btn btn-danger icon-heart" type="button">
-										<i class="fa fa-heart"></i>
-									</button>
-								</div>
-							</div>
-							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
-								<p> {{book.author}}</p>
-								<div class="star"></div> 
-								<p class="price">{{book.sellingPrice|number}} đ </p>
-							</div>
-						</div>
-					</div>
-				
-				<div class="book-home">
-					<div class=" heading col-md-12 col-sm-12">    
-						<h2>Best Seller <a href="#/bookAll" class="seeAll">See All</a></h2>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12"  >
-						<div class="book">	
-							<div class="book-heading">
-								<a href="#/bookDetail">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-								</a>
-								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
-										<i class="fa fa-shopping-cart"></i>
-									</button>
-									<button class="btn btn-danger icon-heart" type="button">
-										<i class="fa fa-heart"></i>
-									</button>
-								</div>
-							</div>
-							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
-								<p> Gam 7</p>
-								<div class="star"></div> 
-								<p class="price">$75.00</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
-						<div class="book">	
-							<div class="book-heading">
-								<a href="#/bookDetail">
-									<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
-								</a>
-								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
-										<i class="fa fa-shopping-cart"></i>
-									</button>
-									<button class="btn btn-danger icon-heart" type="button">
-										<i class="fa fa-heart"></i>
-									</button>
-								</div>
-							</div>
-							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
-								<p> {{book.author}}</p>
-								<div class="star"></div> 
-								<p class="price">{{book.sellingPrice|number}} đ </p>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</div>	
-		</div>
-	</div>
-</div>
-</script>
-
-<!--		All Book-->
-<script type="text/ng-template" id="pages/bookAll.html">
-	<div class="container">
-		 <div class="row">
-			 <ol class="breadcrumb">
-				<li><a href="#/" >Home</a></li>
-				<li class="active">All Books</li>
-			</ol>
-		</div>
-	</div>
-	<div class="content">
-		<div class="container">
-			<div class="row" >
-			
-			<div class="col-md-3 col-sm-0 col-xs-0">
-				<div class="categories-wrap">
-					<div class="heading">
-						<h2>Categories</h2>
-					</div>
-					<div class="categories-detail" ng-controller="CategorylController">
-						<ul id="categories">
-							<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-md-9">
-				<div class="book-home">
-					<div class=" heading col-md-12 col-sm-12">    
-						<h2>All Books <a href="#/bookAll" class="seeAll">See All</a></h2>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12"  >
-						<div class="book">	
-							<div class="book-heading">
-								<a href="#/bookDetail">
-									<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="book-img">
-								</a>
-								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
-										<i class="fa fa-shopping-cart"></i>
-									</button>
-									<button class="btn btn-danger icon-heart" type="button">
-										<i class="fa fa-heart"></i>
-									</button>
-								</div>
-							</div>
-							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail" > Viral Book</a></h4>
-								<p> Gam 7</p>
-								<div class="star"></div> 
-								<p class="price">$75.00</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
-						<div class="book">	
-							<div class="book-heading">
-								<a href="#/bookDetail">
-									<img src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
-								</a>
-								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
-										<i class="fa fa-shopping-cart"></i>
-									</button>
-									<button class="btn btn-danger icon-heart" type="button">
-										<i class="fa fa-heart"></i>
-									</button>
-								</div>
-							</div>
-							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail" > {{book.title}}</a></h4>
-								<p> {{book.author}}</p>
-								<div class="star"></div> 
-								<p class="price">{{book.sellingPrice|number}} đ </p>
-							</div>
-						</div>
-					</div>
-					
-			</div>
-		</div>
-	</div>
-	</script>
-	
-<!--Book in detail-->
-<script type="text/ng-template" id="pages/bookDetail.html">
-<div class="container">
-	 <div class="row">
-		 <ol class="breadcrumb">
-			<li><a href="#/" >Home</a></li>
-			<li><a href="#/bookAll" >All Books</a></li>
-			<li class="active">Detail</li>
-		</ol>
-	</div>
-</div>
-<div class="content">
-	<div class="container">
-		<div class="row">
-		
-			<div class="col-md-3 col-sm-0 col-xs-0">
-					<div class="categories-wrap">
-						<div class="heading">
-							<h2>Categories</h2>
-						</div>
-						<div class="categories-detail" ng-controller="CategorylController">
-							<ul id="categories">
-								<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			
-			<div class="col-md-9">
-				<div class="col-md-6">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-				</div>
-				<div class="col-md-6" id="info">
-					<div>
-						<h3> GAM7 Book No 2: Saturation - Điểm Bão Hòa</h3>
-						<p class="author"> Gam 7</p>
-					</div>
-					<div>
-						<p>An phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo</p>
-					</div>
-					<div class="star"> </div> <p> (1 đánh giá) </p>
-					<p class="price">$75.00</p>
-					<button type="button">Mua</button>
-				</div>
-
-				<div class="col-md-12" id="info-detail">
-					<div class="heading ">
-						<h2>Thông tin </h2>
-					</div>
-					<div>
-					<h5 class="thongtin">GAM7 Book No 2: Saturation - Điểm Bão Hòa</h5>
-					<br/>
-					<p class="thongtin">
-					GAM7 là ấn bản chuyên ngành dành riêng cho thế hệ Marketer năng động tại Việt Nam, phát hành bởi RIO Creative với sự đồng hành về nội dung và truyền thông từ Brands Vietnam cùng RGB.vn - Cộng đồng Sáng tạo Việt Nam.
-					<br/><br/>
-
-					Ấn phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo.<br/><br/>
-
-					Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Huỳnh Vĩnh Sơn, Hồ Công Hoài Phương, Nguyễn Quang Hiệp, Leo Đinh, Hoàng Nguyễn, Nguyễn Thành Long, Đặng Thuý Hà, Nguyễn Tiến Huy, Phạm Minh Toàn, Trần Quốc Hiệp, Nguyễn Minh Ngọc, RGB, Tomorrow Marketer, chắc chắn sẽ giúp bạn có thêm kiến thức cũng như cảm hứng trên con đường Marketing.</p>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="heading">
-						<h2>Comment</h2>
-					</div>
-					<div>
-						<ul id="cmt">
-							<li class="cmt"> 
-							 "Đây quả là một cuốn sách hay, các bạn nên  tìm hiểu và tìm đọc"
-							 <cite>- <b>Pete Nguyen</b> <div class="star"> </div></cite>
-							</li>
-						 </ul>
-					 </div>
-					 <div>
-						 <form name="" ng-submit="" novalidate style="margin-top:40px">
-						 <h4 class="thongtin">Add Comment</h4>
-						 <textarea  cols="30" rows="10" required></textarea>
-						 <label for="" class="thongtin">by:</label>
-						 <input type="text"  required placeholder="Name" />
-						 <br/>
-						 <div class="thongtin">
-							<label>Gửi đánh giá: </label> <div class="star"> </div>
-						 </div>
-						 <br/>
-						 <input type="submit" value="Submit" style="width:10%" />
-						 </form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</script>
-	<!--	Add new book-->
-<script type="text/ng-template" id="pages/bookAdd.html">
-<div class="container">
-	 <div class="row">
-		 <ol class="breadcrumb">
-			<li><a href="#/" >Home</a></li>
-			<li class="active">Admin</li>
-		</ol>
-	</div>
-</div>
-<div class="content">
-	<div class="container">
-	<div class="row" id="form-upload"> 
-		<span class="badge">Add New Book</span>
-		<h4>Tiêu đề <label style="color:red">*</label></h4>
-		<input type="text" required>
-		<h4>Tác giả <label style="color:red">*</label></h4>
-		<input type="text" required>
-		<h4>Giá <label style="color:red">*</label></h4>
-		<input type="text" required>
-		<h4>Thông tin</h4>
-		<input type="text">
-		<h4>Hình ảnh <label style="color:red">*</label> </h4>
-			<div class="imageLoad"></div>
-			<input type="file" accept="image/*" style ="display:none"  id="imgfile"/>
-			<button class="upload" type="button" id="btimg">
-				<i class="fa fa-camera fa fa-2x"></i>
-			</button>
-		<h4>Thể loại</h4>
-		<input type="text">
-		
-	</div>	
-</div>
-</div>
-<div class="panel panel-default ng-scope">
-    <div class="panel-heading">
-        <h3 class="panel-title">Add Book</h3>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-12">
-                <form ng-submit="addBook()" class="ng-pristine ng-invalid ng-invalid-required">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.title" placeholder="Title">
-                    </div>
-                    <div class="form-group" ng-init="getGenres()">
-                        <label>Genre</label>
-                        <select ng-model="book.genre" ng-required="true" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-options="genre as genre.name for genre in genres" required="required"><option value="?" selected="selected"></option><option label="Sách Ngoại Văn" value="object:38">Sách Ngoại Văn</option><option label="Sách Kinh Tế" value="object:39">Sách Kinh Tế</option><option label="Sách Văn Học Trong Nước" value="object:40">Sách Văn Học Trong Nước</option><option label="Sách Văn Học Nước Ngoài" value="object:41">Sách Văn Học Nước Ngoài</option><option label="Sách Thường Thức Đời Sống" value="object:42">Sách Thường Thức Đời Sống</option><option label="Sách Thiếu Nhi" value="object:43">Sách Thiếu Nhi</option><option label="Sách Phát Triển Bản Thân" value="object:44">Sách Phát Triển Bản Thân</option><option label="Sách Tin Học - Ngoại Ngữ" value="object:45">Sách Tin Học - Ngoại Ngữ</option><option label="Sách Chuyên Ngành" value="object:46">Sách Chuyên Ngành</option><option label="Sách Giáo Khoa Giáo Trình" value="object:47">Sách Giáo Khoa Giáo Trình</option></select>
-                    </div>
-                    <div class="form-group">
-                        <label>Author</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.author" placeholder="Author">
-                    </div>
-                    <div class="form-group">
-                        <label>Publisher</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.publisher" placeholder="Publisher">
-                    </div>
-                    <div class="form-group">
-                        <label>Pages</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.pages" placeholder="Pages">
-                    </div>
-                    <div class="form-group">
-                        <label>Weight</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.weight" placeholder="Weight">
-                    </div>
-                    <div class="form-group">
-                        <label>Width</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.width" placeholder="Width">
-                    </div>
-                    <div class="form-group">
-                        <label>Depth</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.depth" placeholder="Depth">
-                    </div>
-                    <div class="form-group">
-                        <label>Release Date</label>
-                        <input type="datetime" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.releaseDate" placeholder="Release Date">
-                    </div>
-                    <div class="form-group">
-                        <label>Short Description</label>
-                        <textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.shortDescription" placeholder="Short Description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Full Description</label>
-                        <textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.fullDescription" placeholder="Full Description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Main Image</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.main" placeholder="Main Image">
-                    </div>
-                    <div class="form-group">
-                        <label>First Image</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.first" placeholder="Main Image">
-                    </div>
-                    <div class="form-group">
-                        <label>Second Image</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.second" placeholder="Second Image">
-                    </div>
-                    <div class="form-group">
-                        <label>Sku</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.sku" placeholder="Sku">
-                    </div>
-                    <div class="form-group">
-                        <label>Revious Price</label>
-                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.previousPrice" placeholder="Revious Price">
-                    </div>
-                    <div class="form-group">
-                        <label>Selling Price</label>
-                        <input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.sellingPrice" placeholder="Selling Price">
-                    </div>
-                    <div class="form-group">
-                        <label>Create Date</label>
-                        <input type="datetime" class="form-control ng-pristine ng-untouched ng-valid" ng-model="CreateDate" placeholder="Crea Date">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-</script>
-
-<div class="ng-view"></div>
+<div ng-view> </div>
 
 <!--Footer-->
 <footer>
@@ -820,89 +170,10 @@
 		</div>
 	</div>
 </footer>
-<!-- Pagination-->
-
 
 </body>
 
 <!--Tùy chỉnh-->
-<script>
-var app = angular.module('myApp', ['ngRoute']);	
-	app.config(function($routeProvider) {
-  	$routeProvider
+<script src="book.js"></script>
 
-  .when('/', {
-    templateUrl : 'pages/home.html',
-    controller  : 'HomeController'
-  })
-
-  .when('/bookAll', {
-    templateUrl : 'pages/bookAll.html',
-    controller  : 'BookAllController'
-  })
-
-  .when('/bookAdd', {
-    templateUrl : 'pages/bookAdd.html',
-    controller  : 'BookAddController'
-  })
-	
-  .when('/bookDetail', {
-    templateUrl : 'pages/bookDetail.html',
-    controller  : 'BookDetailController'
-  })
-  .otherwise({redirectTo: '/'});
-});
-	
-app.controller('HomeController', function($scope, $http) {
-    $http.get("https://green-web-bookstore.herokuapp.com/api/books").then(function(response) {
-        $scope.books = response.data;
-    });
-});
-
-app.controller('BookAllController', function($scope, $http) {
-    $http.get("https://green-web-bookstore.herokuapp.com/api/books").then(function(response) {
-        $scope.books = response.data;
-    });
-});
-
-app.controller('BookAddController', function($scope, $http) {
-    $http.get("https://green-web-bookstore.herokuapp.com/api/books").then(function(response) {
-        $scope.books = response.data;
-    });
-});
-
-app.controller('BookDetailController', function($scope, $http) {
-    $http.get("https://green-web-bookstore.herokuapp.com/api/books").then(function(response) {
-        $scope.books = response.data;
-    });
-});
-
-app.controller('CategorylController', function($scope, $http) {
-    $http.get("http://green-web-bookstore.herokuapp.com/api/genres").then(function(response) {
-        $scope.genres = response.data;
-    });
-});
-
-jQuery.noConflict();
-jQuery(document).ready(function(){
-
-//General
-	
-	
-//	Rating Star
-	jQuery(document).ready(function(){
-		jQuery('.star').raty({ score: 3 });
-	});
-//	Nut upload hinh trong Add Book
-	jQuery("#btimg").click(function(){
-		jQuery("#imgfile").click();
-	});
-
-	jQuery("#imgfile").change(function(){
-	    jQuery(".imageLoad").append('<div><img class="thumbnail-img" src='+jQuery(this).val().replace("C:\\fakepath\\","hình\\")+' /> <button type="button" class="removeImg"><i class="fa fa-times"></i></button></div>');});
-	jQuery(document).on("click",".removeImg",function(){
-			jQuery(this).parent("div").remove();
-		});
-});
-</script>
 </html>
