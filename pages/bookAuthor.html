@@ -1,24 +1,24 @@
 
-	<div class="container">
+	<div class="container" ng-init="getBookByAuthor()">
 		 <div class="row">
 			 <ol class="breadcrumb">
 				<li><a href="#/" >Home</a></li>
-				<li class="active">All Books</li>
+				<li class="active">{{text}}</li>
 			</ol>
 		</div>
 	</div>
-	<div class="content" ng-init="getBooks()">
+	<div class="content" ng-init="getBookByAuthor()">
 		<div class="container">
 			<div class="row">
 			
 			<div class="col-md-3 col-sm-0 col-xs-0" ng-init="getGenres()">
 				<div class="categories-wrap">
 					<div class="heading">
-						<h2>Danh mục</h2>
+						<h2>Categories</h2>
 					</div>
-					<div class="categories-detail">
+					<div class="categories-detail" >
 						<ul id="categories">
-							<li ng-repeat="categories in genres"><a href="#/bookByGenres/{{categories._id}}">{{categories.name}}</a></li>
+							<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 			<div class="col-md-9">
 				<div class="book-home">
 					<div class=" heading col-md-12 col-sm-12">    
-						<h2>All Books </h2>
+						<h2>{{text}} </h2>
 					</div>
 
 					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
@@ -57,4 +57,6 @@
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 	

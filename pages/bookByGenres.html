@@ -1,13 +1,13 @@
 
-	<div class="container">
+	<div class="container" ng-init="getBookByGenres()">
 		 <div class="row">
 			 <ol class="breadcrumb">
 				<li><a href="#/" >Home</a></li>
-				<li class="active">All Books</li>
+				<li class="active">{{books[0].genre.name}}</li>
 			</ol>
 		</div>
 	</div>
-	<div class="content" ng-init="getBooks()">
+	<div class="content" ng-init="getBookByGenres()">
 		<div class="container">
 			<div class="row">
 			
@@ -23,11 +23,12 @@
 					</div>
 				</div>
 			</div>
+
 			
-			<div class="col-md-9">
+			<div class="col-md-9" >
 				<div class="book-home">
 					<div class=" heading col-md-12 col-sm-12">    
-						<h2>All Books </h2>
+						<h2>{{books[0].genre.name}}</h2>
 					</div>
 
 					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
@@ -57,4 +58,6 @@
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 	

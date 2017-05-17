@@ -1,76 +1,77 @@
 
-<div class="container">
+<div class="container" ng-init="getBook()">
 	 <div class="row">
 		 <ol class="breadcrumb">
 			<li><a href="#/" >Home</a></li>
-			<li><a href="#/bookAll" >All Books</a></li>
-			<li class="active">Detail</li>
+			<li><a href="#/bookByGenres/{{book._id}}" >{{book.genre.name}}</a></li>
+			<li class="active">{{book.title}}</li>
 		</ol>
 	</div>
-</div>
-<div class="content">
+</div> 
+<div class="content" ng-init="getBook()">
 	<div class="container">
 		<div class="row">
 		
-			<div class="col-md-3 col-sm-0 col-xs-0">
-					<div class="categories-wrap">
-						<div class="heading">
-							<h2>Categories</h2>
-						</div>
-						<div class="categories-detail" ng-controller="CategorylController">
-							<ul id="categories">
-								<li ng-repeat="category in genres"><a href="#/bookAll">{{category.name}}</a></li>
-							</ul>
-						</div>
+			<div class="col-md-3 col-sm-0 col-xs-0" ng-init="getGenres()">
+				<div class="categories-wrap">
+					<div class="heading">
+						<h2>Danh mục</h2>
+					</div>
+					<div class="categories-detail">     
+						<ul id="categories">
+							<li ng-repeat="categories in genres"><a href="#/bookByGenres/{{categories._id}}">{{categories.name}}</a></li>
+						</ul>
 					</div>
 				</div>
+			</div>
+
 			
 			<div class="col-md-9">
 				<div class="col-md-6">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
-					<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="pic-detail-more">
+					<img ng-src="{{book.images.main}}" alt="" class="pic-detail">
 				</div>
 				<div class="col-md-6" id="info">
 					<div>
-						<h3> GAM7 Book No 2: Saturation - Điểm Bão Hòa</h3>
-						<span>Tác giả: 
-							<p class="author"> Gam 7</p>
+						<h3>{{book.title}} </h3>
+						<span><cite>Tác giả: </cite>
+							<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
 						</span>
-						<span>Thể loại:
-							<p class="author"> Gam 7</p>
-						</span>
-					</div>
-					<div>
-						<div class="star"> </div> <p> (1 đánh giá) </p>
-						<p class="price">$75.00</p>
-						<p class="price">$75.00</p>
-						<span>Tiết kiệm:
-							<p class="price"> $75</p>
+						<span ng-init="getGenres()"><cite>Thể loại:</cite>
+							<a class="genre" href="#/bookByGenres/{{book._id}}"> {{book.genre.name}}</a>
 						</span>
 					</div>
 					<div>
-						<p>Ấn phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo</p>
+						<span>
+							<div class="star"> </div>  (1 đánh giá) 
+						</span>
+						<span class="pre-price">
+							{{book.previousPrice|number}} <sup>đ</sup>
+						</span>
+						<span class="selling-price">
+							{{book.sellingPrice|number}} <sup>đ</sup>
+						</span>
+						<span>
+							<cite>Tiết kiệm:</cite>
+							<span class="save-price"> {{ book.previousPrice - book.sellingPrice|number}} <sup>đ</sup></span>
+						</span>
 					</div>
-					<input type="number" min="1">
-					<button type="button" class="btn btn-danger"><i class="fa fa-cart"></i>Thêm vào giỏ</button>
+					<div>
+						<span><cite><strong>Giới thiệu:</strong></cite>
+							<div class="full-description" ng-model="book.shortDescription" ta-bind="text"></div>
+						</span>
+					</div>
+					<md-button type="button" class="md-fab md-primary md-mini"><i class="fa fa-shopping-cart"></i></md-button>
+					<input type="number" min="1" value="1">
+					<md-button type="button" class="md-fab md-mini" style="background-color:red"><i class="fa fa-heart"></i></md-button>
 				</div>
 
 				<div class="col-md-12" id="info-detail">
 					<div class="heading">
-						<h2>Giới thiệu sách </h2>
+						<h2><strong>Giới thiệu sách</strong> </h2>
 					</div>
 					<div>
-					<h5 class="thongtin">GAM7 Book No 2: Saturation - Điểm Bão Hòa</h5>
-					<br/>
-					<p class="thongtin">
-					GAM7 là ấn bản chuyên ngành dành riêng cho thế hệ Marketer năng động tại Việt Nam, phát hành bởi RIO Creative với sự đồng hành về nội dung và truyền thông từ Brands Vietnam cùng RGB.vn - Cộng đồng Sáng tạo Việt Nam.
-					<br/><br/>
-
-					Ấn phẩm GAM7 Book No 2 với chủ đề Saturation - Bão hòa là một món quà đặc biệt dành tặng độc giả. Bạn sẽ được truyền cảm hứng từ những câu chuyện về các thương hiệu trong thời kì bão hòa, chia sẻ góc nhìn đa chiều từ các chuyên gia đầu ngành xoay quanh điểm bão hòa của thị trường, cùng các định hướng, ý tưởng cho hoạt động Marketing, thiết kế sáng tạo.<br/><br/>
-
-					Với sự tham gia của các chuyên gia hàng đầu như: Richard Moore, Huỳnh Vĩnh Sơn, Hồ Công Hoài Phương, Nguyễn Quang Hiệp, Leo Đinh, Hoàng Nguyễn, Nguyễn Thành Long, Đặng Thuý Hà, Nguyễn Tiến Huy, Phạm Minh Toàn, Trần Quốc Hiệp, Nguyễn Minh Ngọc, RGB, Tomorrow Marketer, chắc chắn sẽ giúp bạn có thêm kiến thức cũng như cảm hứng trên con đường Marketing.</p>
+					<h5 class="thongtin">{{book.title}}</h5>
+						<div class="full-description" ng-model="book.fullDescription" ta-bind="text"></div>
 					</div>
 				</div>
 				
@@ -82,27 +83,28 @@
 							<table class="table table-responsive">
 							  <tr class="active">
 								<th>Nhà xuất bản</th>
-								<td>NXB Trẻ</td>
+								<td>{{book.publisher}}</td>
 							  </tr>
 							  <tr class="warning">
 								<th>SKU</th>
-								<td>No</td>
+								<td>{{book.sku}}</td>
 							  </tr>
 							  <tr class="active">
 								<th>Số trang</th>
-								<td>NXB Trẻ</td>
+								<td>{{book.pages}}</td>
 							  </tr>
 							  <tr class="warning">
 								<th>Trọng lượng </th>
-								<td>No</td>
+								<td>{{book.weight}} g</td>
 							  </tr>
 							  <tr class="active">
 								<th>Kích thướt</th>
-								<td>NXB Trẻ</td>
+								<td>{{book.size.depth}}x{{book.size.width}} cm
+								</td>
 							  </tr>
 							  <tr class="warning">
 								<th>Ngày xuất bản</th>
-								<td>No</td>
+								<td>{{book.releaseDate|date:"dd/mm/yyyy"}}</td>
 							  </tr>
 						  </table>
 						</div>
@@ -110,54 +112,62 @@
 				
 				<div class="col-md-12">
 					<div class="heading">
-						<h2>Comment</h2>
+						<h2>Bình luận</h2>
 					</div>
-					<div>
-						 <div class="row">
-							<div class="col-sm-8">
-								<div class="panel panel-white post panel-shadow">
-									<div class="post-heading">
-										<div class="pull-left image">
-											<img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-										</div>
-										<div class="pull-left meta">
-											<div class="title h5">
-												<a href="#"><b>Ryan Haywood</b></a>
+					<div class="row comment-line">
+						<div class="col-sm-12">
+							<div class="panel panel-white post panel-shadow">
+								<div class="post-heading">
+									<div class="pull-left image">
+										<img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+									</div>
+									<div class="pull-left meta">
+										<div class="title h5">
+											<a href="#">
+												<b>Ryan Haywood</b>
+											</a>
 												made a post.
-											</div>
+										</div>
 											<h6 class="text-muted time">1 minute ago</h6>
-										</div>
-									</div> 
-									<div class="post-description"> 
-										<p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-										<div class="stats">
-											<a href="#" class="btn btn-default stat-item">
-												<i class="fa fa-thumbs-up"></i>2
-											</a>
-											<a href="#" class="btn btn-default stat-item">
-												<i class="fa fa-thumbs-down"></i>12
-											</a>
-										</div>
+									</div>
+								</div> 
+								<div class="post-description"> 	
+									<p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
+									<div class="stats">
+										<a href="#" class="btn btn-default stat-item">
+											<i class="fa fa-thumbs-up"></i>2
+										</a>
+										<a href="#" class="btn btn-default stat-item">
+											<i class="fa fa-thumbs-down"></i>12
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
-					 </div>
-					 <div>
-						 <form name="" ng-submit="" novalidate style="margin-top:40px">
-						 <h4 class="thongtin">Add Comment</h4>
-						 <textarea  cols="30" rows="10" required></textarea>
-						 <label for="" class="thongtin">by:</label>
-						 <input type="text"  required placeholder="Name" />
-						 <br/>
-						 <div class="thongtin">
-							<label>Gửi đánh giá: </label> <div class="star"> </div>
-						 </div>
-						 <br/>
-						 <input type="submit" value="Submit" style="width:10%" />
-						 </form>
 					</div>
 				</div>
+				<div class="col-md-12">
+					<div class="heading">
+						<h2>Viết bình luận</h2>
+					</div>
+					 <div class="box-comment">
+							<div class="pull-left image">
+								<img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+							</div>
+							 <form name="" ng-submit="" novalidate style="margin-top:40px">
+								 <h4 class="thongtin">Add Comment</h4>
+								 <textarea  cols="50" rows="10" required></textarea>
+								 <label for="" class="thongtin">by:</label>
+								 <input type="text"  required placeholder="Name" />
+								 <br/>
+								 <div class="thongtin">
+									<label>Gửi đánh giá: </label> <div class="star"> </div>
+								 </div>
+								 <br/>
+								 <input type="submit" value="Submit" style="width:10%" />
+							 </form>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>

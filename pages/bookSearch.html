@@ -2,12 +2,12 @@
 	<div class="container">
 		 <div class="row">
 			 <ol class="breadcrumb">
-				<li><a href="#/" >Home</a></li>
-				<li class="active">All Books</li>
+				<li><a href="#/" >Trang chủ</a></li>
+				<li class="active">Tìm kiếm</li>
 			</ol>
 		</div>
 	</div>
-	<div class="content" ng-init="getBooks()">
+	<div class="content" >
 		<div class="container">
 			<div class="row">
 			
@@ -23,11 +23,12 @@
 					</div>
 				</div>
 			</div>
+
 			
-			<div class="col-md-9">
+			<div class="col-md-9" ng-init="getBookSearch()">
 				<div class="book-home">
 					<div class=" heading col-md-12 col-sm-12">    
-						<h2>All Books </h2>
+						<h2>Tìm kiếm: '{{text}}'</h2>
 					</div>
 
 					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
@@ -57,4 +58,6 @@
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 	

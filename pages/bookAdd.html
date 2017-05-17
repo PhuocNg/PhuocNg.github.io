@@ -9,91 +9,126 @@
 </div>
 <div class="content">
 	<div class="container">
-		<div class="panel panel-default ng-scope">
-			<div class="panel-heading">
-				<h3 class="panel-title">Add Book</h3>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-12">
-						<form ng-submit="addBook()" class="ng-pristine ng-invalid ng-invalid-required">
+		<div class="col-md-12 col-sm-12" ng-init="getBooks()">    
+			<md-content >
+				<md-tabs md-dynamic-height>
+
+					<md-tab label="Thêm sách">
+					<md-content class="md-padding">
+					  <form ng-submit="addBook()" class="ng-pristine ng-invalid ng-invalid-required">
 							<div class="form-group">
-								<label>Title</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.title" placeholder="Title">
+								<label>Tên sách</label>
+								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.title" placeholder="Title" required>
 							</div>
 							<div class="form-group" ng-init="getGenres()">
-								<label>Genre</label>
-								<select ng-model="book.genre" ng-required="true" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-options="genre as genre.name for genre in genres" required="required"><option value="?" selected="selected"></option><option label="Sách Ngoại Văn" value="object:38">Sách Ngoại Văn</option><option label="Sách Kinh Tế" value="object:39">Sách Kinh Tế</option><option label="Sách Văn Học Trong Nước" value="object:40">Sách Văn Học Trong Nước</option><option label="Sách Văn Học Nước Ngoài" value="object:41">Sách Văn Học Nước Ngoài</option><option label="Sách Thường Thức Đời Sống" value="object:42">Sách Thường Thức Đời Sống</option><option label="Sách Thiếu Nhi" value="object:43">Sách Thiếu Nhi</option><option label="Sách Phát Triển Bản Thân" value="object:44">Sách Phát Triển Bản Thân</option><option label="Sách Tin Học - Ngoại Ngữ" value="object:45">Sách Tin Học - Ngoại Ngữ</option><option label="Sách Chuyên Ngành" value="object:46">Sách Chuyên Ngành</option><option label="Sách Giáo Khoa Giáo Trình" value="object:47">Sách Giáo Khoa Giáo Trình</option></select>
+								<label>Thể loại</label>
+								<select ng-model="book.genre" ng-required="true" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-options="genre as genre.name for genre in genres" required>
+								</select>
 							</div>
 							<div class="form-group">
-								<label>Author</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.author" placeholder="Author">
+								<label>Tác giả</label>
+								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.author" placeholder="Author" required>
 							</div>
 							<div class="form-group">
-								<label>Publisher</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.publisher" placeholder="Publisher">
+								<label>Nhà xuất bản</label>
+								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.publisher" placeholder="Publisher" required>
 							</div>
 							<div class="form-group">
-								<label>Pages</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.pages" placeholder="Pages">
+								<label>Trang</label>
+								<input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.pages" placeholder="Pages">
 							</div>
 							<div class="form-group">
-								<label>Weight</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.weight" placeholder="Weight">
+								<label>Khối lượng</label>
+								<input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.weight" placeholder="Weight">
 							</div>
 							<div class="form-group">
-								<label>Width</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.width" placeholder="Width">
+								<label>Chiều ngang</label>
+								<input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.width" placeholder="Width">
 							</div>
 							<div class="form-group">
-								<label>Depth</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.depth" placeholder="Depth">
+								<label>Chiều sâu</label>
+								<input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.size.depth" placeholder="Depth">
 							</div>
 							<div class="form-group">
-								<label>Release Date</label>
-								<input type="datetime" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.releaseDate" placeholder="Release Date">
-							</div>
-							<div class="form-group">
-								<label>Short Description</label>
-								<textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.shortDescription" placeholder="Short Description"></textarea>
-							</div>
-							<div class="form-group">
-								<label>Full Description</label>
-								<textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.fullDescription" placeholder="Full Description"></textarea>
-							</div>
-							<div class="form-group">
-								<label>Main Image</label>
+								<label>Hình ảnh</label>
 								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.main" placeholder="Main Image">
-							</div>
-							<div class="form-group">
-								<label>First Image</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.first" placeholder="Main Image">
-							</div>
-							<div class="form-group">
-								<label>Second Image</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.images.second" placeholder="Second Image">
 							</div>
 							<div class="form-group">
 								<label>Sku</label>
 								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.sku" placeholder="Sku">
 							</div>
 							<div class="form-group">
-								<label>Revious Price</label>
-								<input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.previousPrice" placeholder="Revious Price">
+								<label>Giá ban đầu</label>
+								<input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.previousPrice" placeholder="Revious Price">
 							</div>
 							<div class="form-group">
-								<label>Selling Price</label>
+								<label>Giá bán</label>
 								<input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.sellingPrice" placeholder="Selling Price">
 							</div>
 							<div class="form-group">
-								<label>Create Date</label>
-								<input type="datetime" class="form-control ng-pristine ng-untouched ng-valid" ng-model="CreateDate" placeholder="Crea Date">
+								<label>Mô tả cơ bản</label>
+								<textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.shortDescription" placeholder="Short Description"></textarea>
 							</div>
-							<button type="submit" class="btn btn-default">Submit</button>
+							<div class="form-group">
+								<label>Mô tả chi tiết</label>
+								<textarea class="form-control ng-pristine ng-untouched ng-valid" ng-model="book.fullDescription" placeholder="Full Description"></textarea>
+							</div>
+							<div class="form-group" data-provide="datepicker">
+								<label>Release Date</label>
+								<md-datepicker md-placeholder="Release date" ng-model="book.releaseDate"></md-datepicker>
+							</div>
+							<div class="form-group" data-provide="datepicker">
+								<label>Created Date</label>
+								<md-datepicker md-placeholder="Created date" ng-model="book.createdDate"></md-datepicker>
+							</div>
+							<md-button type="submit" class="md-raised md-warn" >Đăng</md-button>
 						</form>
+					</md-content>
+				  </md-tab>
+
+					<md-tab label="Tất cả sách">
+					<md-content>
+						<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
+							<div class="book">	
+								<div class="book-heading">
+									<a href="#/bookDetail/{{book._id}}">
+										<img ng-src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
+									</a>
+								</div>
+								<div class="book-detail">
+									<h4 class="book-title"><a href="#/bookDetail/{{book._id}}" > {{book.title}}</a></h4>
+									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{book._id}}" >Xóa</button>
+									<button type="submit" class="btn btn-primary"><a href="#/editBook/{{book._id}}">Sửa</a></button>
+								</div>
+							</div>
+						</div>
+					</md-content>
+				  </md-tab>
+					<!-- Modal -->
+					<div class="modal fade" id="{{book._id}}" role="dialog">
+				<div class="modal-dialog">
+
+				  <!-- Modal content-->
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">Đăng nhập</h4>
+					  <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
+					  <button type="button" class="btn btn-warning" data-dismiss="modal" id="modal-sign-up">Suy nghĩ lại</button>
 					</div>
+				  </div>
+
 				</div>
-			</div>
+			  </div>
+			  
+				</md-tabs>
+			</md-content>
+			
+
 		</div>
+		
+		
 	</div>
 </div>
+
+
