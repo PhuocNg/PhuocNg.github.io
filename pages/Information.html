@@ -1,35 +1,38 @@
 	
 <!--Content	-->
-<div class="content" ng-init="getBooks()">
-	<div class="container">
+<div class="content" ng-init="init()">
+	<div class="container" ng-init="viewProfile()">
 		<div class="row">
 			<div class="book-home">
 				<div class=" heading col-md-12 col-sm-12">    
 					<h2>Thông tin cá nhân </h2>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12" >
+				<div class="col-md-3 col-sm-3 col-xs-3" >
 					<div class="book">	
 						<div class="book-heading">
-							<a href="#/bookDetail/{{book._id}}">
-								<img src="../../../../../Downloads/1.jpg" alt="" class="thumbnail-img book-img">
-							</a>
-							<div class="icon">
-								<button class="btn btn-primary icon-cart" type="button">
-									<i class="fa fa-shopping-cart"></i>
-								</button>
-								<button class="btn btn-danger icon-heart" type="button">
-									<i class="fa fa-heart"></i>
-								</button>
-							</div>
-						</div>
-						<div class="book-detail">
-							<h4 class="book-title"><a href="#/bookDetail/{{book._id}}" > {{book.title}}</a></h4>
-							<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
-							<div class="star"></div> 
-							<p class="price">{{book.sellingPrice|number}}  <sup>đ</sup> </p>
+							<img ng-src="{{user.avatarUrl}}" alt="" class="thumbnail-img book-img">
 						</div>
 					</div>
+				</div>
+				<div class="col-md-9 col-sm-9 col-xs-9" >
+					<div class="book">	
+						<table>
+							<tr>
+								<th>Tên đăng nhập:</th>
+								<td>{{user.name}}</td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td>{{user.email}}</td>
+							</tr>
+							<tr>
+								<th>Địa chỉ:</th>
+								<td>418/39/7 Dương Quảng Hàm P.5 Q.GV</td>
+							</tr>
+						</table>
+					</div>
+					<md-button class="md-raised md-primary">Thay đổi</md-button>
 				</div>
 				
 					

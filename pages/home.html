@@ -33,11 +33,11 @@
 							</div>
 						  </div>
 						  <!-- Left and right controls -->
-						  <a class="left carousel-control" role="button" ng-click="prev()">
+						  <a class="left carousel-control" role="button" ng-click="prev($index)">
 							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 							<span class="sr-only">Previous</span>
 						  </a>
-						  <a class="right carousel-control" role="button" ng-click="next()">
+						  <a class="right carousel-control" role="button" ng-click="next($index)">
 							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 							<span class="sr-only">Next</span>
 						  </a>
@@ -56,17 +56,19 @@
 									<img ng-src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
 								</a>
 								<div class="icon">
-									<button class="btn btn-primary icon-cart" type="button">
+									<button aria-label="cart" class="btn btn-primary icon-cart" type="button">
 										<i class="fa fa-shopping-cart"></i>
 									</button>
-									<button class="btn btn-danger icon-heart" type="button">
+									<button aria-label="heart" class="btn btn-danger icon-heart" type="button">
 										<i class="fa fa-heart"></i>
 									</button>
 								</div>
 							</div>
 							<div class="book-detail">
-								<h4 class="book-title"><a href="#/bookDetail/{{book._id}}" > {{book.title}}</a></h4>
-								<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
+								<h4 class="book-title"><a href="#/bookDetail/{{book._id}}" data-toogle="tooltip" title="{{book.title}}"> {{book.title}}</a></h4>
+								<h6 class="author">
+									<a href="#/bookAuthor/{{book.author}}" class="author" data-toogle="tooltip"> {{book.author}}</a>
+								</h6>
 								<div class="star"></div> 
 								<p class="price">{{book.sellingPrice|number}}  <sup>đ</sup> </p>
 							</div>

@@ -38,20 +38,26 @@
 <!--CSS-->
 <link rel="stylesheet" type="text/css" href="book.css">
 <link rel="stylesheet" type="text/css" href="textAngular.css">
+
+<!--Angular JS Cookies-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.min.js.map"></script>
+
 </head>
 
 <body ng-app="myApp">
 
- <nav class="navbar navbar-focus" ng-controller="HomeController">
+<nav class="navbar navbar-focus" ng-controller="HomeController" ng-init="getGenres()">
   <div class="container-fluid" >
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
-      <a class="navbar-brand" href="#/" >Gam7 Book Store</a>
+      <a class="navbar-brand" href="#/"><i class="fa fa-leanpub"></i>BookShop</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" >
-      <ul class="nav navbar-nav" ng-init="getGenres()">
+      <ul class="nav navbar-nav">
 		  <li class="active"><a href="#/">TRANG CHỦ</a></li>
 		  <li class="dropdown">
 			<a href="" class="dropdown-toggle" data-toggle="dropdown">DANH MỤC <span class="fa fa-caret-down"></span> </a>
@@ -104,30 +110,103 @@
 				</li>
 			</ul>
 		  </li>
-		<li class="dropdown drop-right">
-			<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user" style="padding-right:2px"></span>TÀI KHOẢN</a>
-			<ul class="drop-cate dropdown-menu" role="menu" >
-				<li><a href="#/bookAdd">Admin</a></li>
-				<li><a data-toggle="modal" data-target="#myModal" >Đăng Nhập</a></li>
-				<li><a href="#/Info">Đăng xuất</a></li>
-				<li><a href="#/Info">Thông Tin Tài Khoản</a></li>
-			</ul>
-		  </li>
+		<li ng-hide="isLogged()" class="dropdown drop-right"><a data-toggle="modal" data-target="#modal-sign-in">ĐĂNG NHẬP</a></li>
+		
+		<li ng-show="isLogged()" class="dropdown drop-right" ng-init="init()">
+               <a class="dropdown-toggle" data-toggle="dropdown">{{user.name}}<span class="caret" style="padding-right:2px"></span></a>
+                  <ul class="drop-cate dropdown-menu">
+                      <li><a href="#/Info">Thông tin tài khoản</a></li>
+                      <li><a href="#/bookAdd">Admin</a></li>
+                      <li><a ng-click="logOut()" href="#/">Đăng xuất</a></li>
+                  </ul>
+        </li>
      	<li class="drop-right nav-search">
-     		<form action="" class="nav navbar-nav navbar-right">
+     		<form class="nav navbar-nav navbar-right">
     			<div class="input-group">
-    				<input type="text" class="form-control nav-input-search" ng-model="text" placeholder="Tìm kiếm sách">
-    				<span class="input-group-addon nav-search-btn">
-    					<a href="#/bookSearch/{{text}}">
-    						<i class="fa fa-search"></i>
-    					</a>
-    				</span>
+    				<input type="text" class="form-control nav-input-search" ng-model="text" placeholder="Tìm kiếm sách" required>
+    				<div class="input-group-addon nav-search-btn">
+						<md-button class="md-warn md-raised" type="submit" ng-click="go('/bookSearch/')">
+							<i class="fa fa-search"></i>
+						</md-button>
+    				</div>
   				</div>
      		</form>
      	</li>
       </ul>
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal fade" id="modal-sign-in" role="dialog" >
+				<div class="modal-dialog">
+				  <!-- Modal content-->
+				  <div class="modal-content" ng-init="loadLogin()">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">Đăng nhập</h4>
+					</div>
+					<div class="modal-body">
+					  <form role="form" method="post" ng-submit="summitLogin()">
+						<div class="form-group">
+						  <label><span class="glyphicon glyphicon-user"></span> Email</label>
+						  <input ng-model="loginUser.email" type="text" class="form-control input-modal" name="email" placeholder="Email">
+						</div>
+						<div class="form-group">
+						  <label><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+						  <input ng-model="loginUser.password" type="password" class="form-control input-modal" name="password" placeholder="Mật khẩu">
+						</div>
+						<div class="checkbox">
+						  <label><input type="checkbox" value="" checked>Remember me</label>
+						</div>
+						  <button id="loginbtn" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+					  </form>
+					</div>
+					<div class="modal-footer">
+				  	  <md-button type="button" class="md-flat" id="modal-forgot-psw">Quên mật khẩu</md-button>
+					  <md-button type="button" class="md-flat" data-dismiss="modal" data-toggle="modal" data-target="#modal-sign-up" id="modal-sign-up-btn">Đăng kí tài khoản</md-button>
+					</div>
+				  </div>
+
+				</div>
+			  </div>
+	<div class="modal fade" id="modal-sign-up" role="dialog">
+				<div class="modal-dialog">
+				  <!-- Modal content-->
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">Đăng ký tài khoản</h4>
+					</div>
+					<div class="modal-body">
+					  <form role="form" style="margin-top:-20px" ng-submit="summitSignup()" method="post" name="signUpform">
+						<div class="form-group">
+						  <label><span class="glyphicon glyphicon-user"></span> Tên đăng nhập</label>
+						  <input type="text" class="form-control input-modal" placeholder="Username" name="user" required>
+						</div>
+						<div class="form-group">
+						  <label><span class="glyphicon glyphicon-eye-open"></span> Mật khẩu</label>
+						  <input type="password" class="form-control input-modal" ng-model="password" placeholder="Password" name="psw" required>
+						</div>
+					  	<div class="form-group">
+						  <label><span class="glyphicon glyphicon-repeat"></span> Nhập lại mật khẩu</label>
+						  <input type="password" class="form-control input-modal" placeholder="Enter password again" required>
+						</div>
+					  	<div class="form-group">
+						  <label><span class="glyphicon glyphicon-envelope"></span> Email</label>
+						  <input type="text" class="form-control input-modal" placeholder="Email" name="email" required>
+						</div>
+						<div class="form-group">
+						  <label><span class="glyphicon glyphicon-picture"></span> Ảnh đại diện </label>
+						  <input type="text" class="form-control input-modal" placeholder="Avatar URL">
+						</div>
+						<md-button type="submit" class="md-raised md-warn" style="width:100%;margin-left:-1px" ng-disabled="signUpform.user.$dirty && signUpform.user.$invalid ||
+  						signUpform.email.$dirty && signUpform.email.$invalid || signUpform.psw.$dirty && signUpform.psw.$invalid">Đăng ký </md-button>
+						<p>Bạn đã có tài khoản?<md-button type="button" class="md-flat" data-dismiss="modal" data-toggle="modal" data-target="#modal-sign-in">Nhấn</md-button></p>
+						
+					  </form>
+					</div>
+				  </div>
+
+				</div>
+			  </div>
+	<div class="modal fade" id="{{books._id}}" role="dialog">
 				<div class="modal-dialog">
 
 				  <!-- Modal content-->
@@ -135,28 +214,18 @@
 					<div class="modal-header">
 					  <button type="button" class="close" data-dismiss="modal">&times;</button>
 					  <h4 class="modal-title">Đăng nhập</h4>
-					</div>
-					<div class="modal-body">
-					  	<p>Tài khoản:</p>
-					  	<input type="text" placeholder="Tên đăng nhập" required autofocus>
-					  	<p>Mật khẩu:</p>
-					  	<input type="password" placeholder="Mật khẩu" required>
-					</div>
-					<div class="modal-footer">
-				  	  <a href="">Quên mật khẩu?</a>
-					  <button type="button" class="btn btn-danger" data-dismiss="modal">Đăng nhập</button>
-					  <button type="button" class="btn btn-warning" data-dismiss="modal" id="modal-sign-up">Đăng kí tài khoản</button>
+					  <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
+					  <button type="button" class="btn btn-warning" data-dismiss="modal" >Suy nghĩ lại</button>
 					</div>
 				  </div>
 
 				</div>
 			  </div>
-
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
  </nav>
  
-<div ng-view> </div>
+<div ng-view > </div>
 
 <!--Footer-->
 <footer>
@@ -226,5 +295,4 @@
 
 <!--Tùy chỉnh-->
 <script src="book.js"></script>
-<!--<script src="datePicker.js"></script>-->
 </html>

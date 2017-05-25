@@ -13,7 +13,7 @@
 			<md-content >
 				<md-tabs md-dynamic-height>
 
-					<md-tab label="Thêm sách">
+					<md-tab label="Thêm sách" class="heading"> 
 					<md-content class="md-padding">
 					  <form ng-submit="addBook()" class="ng-pristine ng-invalid ng-invalid-required">
 							<div class="form-group">
@@ -98,28 +98,12 @@
 								<div class="book-detail">
 									<h4 class="book-title"><a href="#/bookDetail/{{book._id}}" > {{book.title}}</a></h4>
 									<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{book._id}}" >Xóa</button>
-									<button type="submit" class="btn btn-primary"><a href="#/editBook/{{book._id}}">Sửa</a></button>
+									<button type="submit" class="btn btn-primary"><a href="#/editBook/{{book._id}}" style="color:white">Sửa</a></button>
 								</div>
 							</div>
 						</div>
 					</md-content>
 				  </md-tab>
-					<!-- Modal -->
-					<div class="modal fade" id="{{book._id}}" role="dialog">
-				<div class="modal-dialog">
-
-				  <!-- Modal content-->
-				  <div class="modal-content">
-					<div class="modal-header">
-					  <button type="button" class="close" data-dismiss="modal">&times;</button>
-					  <h4 class="modal-title">Đăng nhập</h4>
-					  <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
-					  <button type="button" class="btn btn-warning" data-dismiss="modal" id="modal-sign-up">Suy nghĩ lại</button>
-					</div>
-				  </div>
-
-				</div>
-			  </div>
 			  
 				</md-tabs>
 			</md-content>

@@ -1,21 +1,21 @@
 @charset "UTF-8";
 /* CSS Document */
 /*   General*/
-	body{background-color:;}
+	body{background-color:rgba(243,252,255,1.00);
+		height:initial;}
 	a{color:black;}
 	a:hover{text-decoration:none;}
 	hr{margin-left:15px;
 		margin-right:65px;
 		border-top: 5px solid black;}
 	span{display:block;}
-	h2{color:rgba(217,77,61,1.00)}
+	h2{color:rgba(255,78,0,1.00);}
 	h3{color:red;}
 	.btn:focus{border:0px; outline:none;}
 	
-	.thumbnail{border:}
-	
 	.heading{border-bottom:solid 3px black;
 			position:inline;}
+	#textAngular-editableFix-010203040506070809{display:none;}
 	ol.breadcrumb>li>a{color:rgba(0,174,184,1.00);}
 	
 	@media screen and (max-width: 991px) {
@@ -25,6 +25,13 @@
 		#myCarousel{margin-bottom:20px;}
 	}
 /*	Navbar*/
+	.fa-leanpub{color:white;
+				border:2px solid rgba(255,78,0,1.00);
+				background-color:rgba(255,78,0,1.00);
+				border-radius:100px;
+				padding:7px;
+				margin-top:-5px;
+			}
 	.navbar{border-radius:0px;
 			background-color:rgba(30,33,40,1.00);
 			}
@@ -34,9 +41,11 @@
 							color:white;}
 	ul.navbar-nav>li>a:focus{background: black !important;
 							color:white !important;}
-	.navbar-brand{color:rgba(255,78,0,1.00)}
-	.navbar-brand:hover{color:rgba(255,78,0,1.00);}
-	.navbar-brand:focus{color:rgba(255,78,0,1.00);}
+	.navbar-brand{color:white;
+				font-weight:500;
+				}
+	.navbar-brand:hover{color:white;}
+	.navbar-brand:focus{color:white;}
 	.dropdown{margin-bottom:-20px;
 				}
 	
@@ -109,28 +118,45 @@
 	.drop-cart-footer>a:hover {color:white !important;
 							background-color:rgba(255,78,0,1.00) !important;
 							opacity:1;}
-	.nav-search{width:300px;
-			padding:10px 0px;
+	.nav-search{width:500px;
+			padding:9px 0px;
 			margin-right: 20px;}
 	.nav-search-btn{background-color:white !important;
-			;}
-	.nav-search-btn>a>i{color:rgba(255,78,0,1.00);}
+					padding:0;
+					margin:0;
+					border:none;}
+	.nav-search-btn>button{margin:0}
 	.nav-input-search:focus{border:1px solid #ccc;
 							box-shadow: none;}
-
+	.open>a:hover{background-color:black !important;}
+	.open>a{background-color:black !important;}
 /*Modal*/
 
-	.modal-header{text-align:center;}
-	#modal-sign-up{float:left;}
+	.modal-body{padding:40px 50px;}
 	.modal-body>input{width:100%;
 					margin-bottom:10px;}
+	.modal-header,h4.modal-title, .close {
+		padding:20px;
+      background-color:rgba(255,78,0,1.00) ;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  	}
+	.modal-footer{background-color:rgba(255,78,0,1.00);}
+	.input-modal{width:100% !important;}
+	
+	#modal-sign-up-btn{margin-left:40px;
+					color:white;
+					float:left;}
+	#modal-forgot-psw{margin-right:40px;
+					color:white;}
 /*Book trang Home*/
 	#myCarousel{width:100%;
 				height:100%;
 				margin-bottom:20px;}
 	.carousel-inner>.item>img{height:300px;
 								width:100%}
-	.book{
+	.book{max-height:550px;
 		text-align:center;
 		margin-bottom:20px;
 		margin-top: 20px;}
@@ -165,7 +191,10 @@
 				font-weight:600;}
 	.book-title{color:rgba(3,81,183,1.00);
 				line-height: 18px;
-				height:54px;}
+				height:54px;
+				text-overflow:ellipsis;
+				overflow:hidden;
+				white-space:pre-wrap;}
 	.book-title>a:hover{color:rgba(167,219,220,1.00);
 					}
 	.seeAll{float:right;
@@ -259,9 +288,12 @@
 			opacity:0.6;
 			font-weight:600;}
 	.genre:hover{color:darkorange;}
-	a.author{color:rgba(35,127,184,1.00);
-			opacity:0.6;
-			font-weight:600;}
+	.author{color:rgba(35,127,184,1.00);
+			font-weight:600;
+			text-overflow:ellipsis;
+			overflow:hidden;
+			white-space:nowrap;
+			}
 	a.author:hover{color:darkblue;}
 	.pre-price{text-decoration:line-through;
 			color:black !important;
@@ -275,16 +307,13 @@
 	.save-price{color:green !important;
 			margin-top:1px !important;
 			font-weight:500;}
+	.ava-comment{width:90px;
+				height:100px;}
 /*	Trang detail comment*/
 	.star{display:inline-block;}
-	.box-comment>input,.box-comment>textarea {display:block;
-												width:94%;
-												height:20%;
-												padding:10px;
-												font-size:1.1em;
-												margin-left:15px;
-												margin-right:65px;}
-	
+	.box-comment{margin-top:20px}
+	.box-comment>form>textarea{width:100%;
+								margin-left:5px;}
 	.comment-line{margin-top:10px;
 	}
 	.panel-shadow {box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
