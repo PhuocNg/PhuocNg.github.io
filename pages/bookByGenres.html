@@ -30,9 +30,11 @@
 					<div class=" heading col-md-12 col-sm-12">    
 						<h2>{{genreName}}</h2>
 					</div>
-
+					<div ng-show="!unidentified">
+						<span class="un-iden" >{{result}}</span>
+					</div>
 					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
-						<div class="book">	
+						<div class="book" name="bookload">	
 							<div class="book-heading">
 								<a href="#/bookDetail/{{book._id}}">
 									<img ng-src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
@@ -51,7 +53,7 @@
 								<h6 class="author">
 									<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
 								</h6>
-								<div class="star"></div> 
+								<span uib-rating ng-model="rating" max="max" read-only="true" on-hover="hoveringOver(value)" class="star"></span>
 								<p class="price">{{book.sellingPrice|number}}  <sup>đ</sup> </p>
 							</div>
 						</div>

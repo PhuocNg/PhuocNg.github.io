@@ -12,38 +12,79 @@
 	h2{color:rgba(255,78,0,1.00);}
 	h3{color:red;}
 	.btn:focus{border:0px; outline:none;}
-	
+	@font-face{
+		font-family:fontHeader;
+		src: url(font/FS Bandung.otf);
+	}
+	.logo{font-family:fontHeader;
+			font-weight:600 ;
+		}
 	.heading{border-bottom:solid 3px black;
 			position:inline;}
 	#textAngular-editableFix-010203040506070809{display:none;}
 	ol.breadcrumb>li>a{color:rgba(0,174,184,1.00);}
-	
-	@media screen and (max-width: 991px) {
-		.categories-wrap{display:none;}
-    	ul.footer {text-align:center;}
-    	h5.footer-title{text-align:center;}
-		#myCarousel{margin-bottom:20px;}
-	}
-/*	Navbar*/
-	.fa-leanpub{color:white;
-				border:2px solid rgba(255,78,0,1.00);
-				background-color:rgba(255,78,0,1.00);
-				border-radius:100px;
-				padding:7px;
-				margin-top:-5px;
+	.un-iden{text-align:center;
+		font-size:30px;
+		padding-top:100px}
+	#toolbarWC{display:none !important;}
+	#toolbarCC{display:none !important;}
+	@media screen and (max-width: 992px) {
+		.categories-wrap{
+			display:none;
+		}
+    	ul.footer {
+			text-align:center;
+		}
+    	h5.footer-title{
+			text-align:center;
+		}
+		#myCarousel{
+			margin-bottom:20px;
+		}
+		.un-iden{text-align:center;
+				font-size:20px;
+				padding-top:90px
+		}
+		.nav-search{width:170px !important;
 			}
+		.nav-search-btn>button{min-width:50px !important;}
+		.icon{margin-left:120px !important ;
+		}
+	}
+	@media screen and (max-width: 768px) {
+			.un-iden{text-align:center;
+					font-size:20px;
+					padding-top:30px
+			}
+			.nav-search{width:90% !important;
+						margin-left:10px;
+			}
+			.dropdown{margin-bottom:0px !important;
+			}
+			#myCart{display:none !important;
+			}
+			.book-home{margin-top:0px !important}
+			.navbar-brand{
+				margin-left:25%;
+			}
+			.icon{margin-left:42% !important;
+			}
+		}
+/*Rating*/
+	.star:focus{ border:none!important;}
+	.star>span:focus{ border:none!important;}
+/*	Navbar*/
 	.navbar{border-radius:0px;
 			background-color:rgba(30,33,40,1.00);
 			}
-	ul.navbar-nav{}
-	ul.navbar-nav>li>a{color:#666;}
+	ul.navbar-nav>li>a{color:#666;
+						font-weight:500;}
 	ul.navbar-nav>li>a:hover{background: black;
-							color:white;}
+							color:orange;}
 	ul.navbar-nav>li>a:focus{background: black !important;
-							color:white !important;}
+							color:orange !important;}
 	.navbar-brand{color:white;
-				font-weight:500;
-				}
+				font-weight:700;}
 	.navbar-brand:hover{color:white;}
 	.navbar-brand:focus{color:white;}
 	.dropdown{margin-bottom:-20px;
@@ -62,13 +103,6 @@
 	ul.drop-cate>li>a:hover{color:white;
 							background-color:black; }
 	
-	li.drop-right{float:right;}
-	li.drop-right>a {padding:15px 20px;
-					color: #666;
-					font-weight: normal;
-					font-size: 15px;}
-	li.drop-right>a:hover {color:white;
-							background-color:black; }
 	li.open>a:focus {color:white;
 					background-color:black !important; }
 	
@@ -118,18 +152,23 @@
 	.drop-cart-footer>a:hover {color:white !important;
 							background-color:rgba(255,78,0,1.00) !important;
 							opacity:1;}
-	.nav-search{width:500px;
+	.nav-search{width:250px;
 			padding:9px 0px;
-			margin-right: 20px;}
+			margin:0px 5px 0px 10px;
+			}
 	.nav-search-btn{background-color:white !important;
 					padding:0;
 					margin:0;
 					border:none;}
 	.nav-search-btn>button{margin:0}
+	.nav-input-search{margin-top:1px;}
 	.nav-input-search:focus{border:1px solid #ccc;
 							box-shadow: none;}
 	.open>a:hover{background-color:black !important;}
 	.open>a{background-color:black !important;}
+	.icon-bar{background-color:orange;
+			}
+	
 /*Modal*/
 
 	.modal-body{padding:40px 50px;}
@@ -150,6 +189,7 @@
 					float:left;}
 	#modal-forgot-psw{margin-right:40px;
 					color:white;}
+	.modal-backdrop{display:none;}
 /*Book trang Home*/
 	#myCarousel{width:100%;
 				height:100%;
@@ -316,6 +356,7 @@
 								margin-left:5px;}
 	.comment-line{margin-top:10px;
 	}
+	.meta{margin-top:-5px}
 	.panel-shadow {box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
 	}
 	.panel-white { border: 1px solid #dddddd;
@@ -348,7 +389,7 @@
 	.post .post-image .image {width: 100%;
 	  						height: auto;
 	}
-	.post .post-description {padding: 15px;
+	.post .post-description {padding:5px 90px;
 	}
 	.post .post-description p {font-size: 14px;
 	}
@@ -403,10 +444,18 @@
 	}
 
 
-/*Trang upload*/
-.form-group>input {width:80%;}
-.form-group>select {width:80%;}
-.form-group>textarea {width:80%;}
+/*Pagination*/
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover {background-color:rgba(255,78,0,1.00);
+																				border-color:rgba(255,78,0,1.00) !important;}
+.pagination>li>a {font-weight:500;}
+
+/*Info*/
+.profile{margin-top:20px;}
+
+/*Edit Book*/
+
+.edit-book>div.btn-toolbar{text-align:center;}
+.edit-book>div.btn-toolbar>div.btn-group{float:none;}
 /*Footer*/
 	footer{padding:85px 20px 85px 20px;
 			background-color:rgba(30,33,40,1.00);
@@ -420,7 +469,8 @@
 	ul.footer>li>a{color:#666;}
 	ul.footer>li>a:hover{color:white;
 						text-decoration: none;}
-	#footer-logo{text-align: center;}
+	#footer-logo{text-align: center;
+				margin-top:-25px;}
 	div.social-link>a{color:#9a9c9f;
 						background: black;
 						width: 32px;

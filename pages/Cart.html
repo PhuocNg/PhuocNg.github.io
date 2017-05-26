@@ -6,103 +6,83 @@
 		</ol>
 	</div>
 </div>
-<div class="content">
+<div class="content" ng-show="cart.length>0">
 	<div class="container">
 		<div class="row" >
-			<div class="col-md-8">
+			<div class="col-md-8 col-sm-8 col-xs-12">
 					<div class=" heading col-md-12 col-sm-12">    
 						<h2>Giỏ hàng</h2>
 					</div>
-					<div class="cart col-md-12 col-sm-12">
-						<div class="col-md-2 col-xs-2 col-sm-2" >
-							<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="cart-img">
+					<div class="cart col-md-12 col-sm-12" ng-repeat="item in cart">
+						<div class="col-md-3 col-xs-3 col-sm-3" >
+							<img ng-src="{{item.item.images.main}}" alt="" class="cart-img">
 						</div>
 						<div class="col-md-5 col-xs-5 col-sm-5">
 							<div>
-								<h4>Tôi thấy hoa vàng trên cỏ đen</h4>
+								<h4>{{item.item.title}}</h4>
 							</div>
 							<div>
 								<h6 class="author">
-									<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
+									<a href="#/bookAuthor/{{book.author}}" class="author"> {{item.item.author}}</a>
 								</h6>
-								<p>Thể loại:</p>
-								<p>Nhà xuất bản:</p>
-							</div>
-							<div>
-								<button type="" class="btn btn-danger">Xoa</button>
+								<p>Thể loại: {{item.item.genre.name}}</p>
+								<p>Nhà xuất bản: {{item.item.publisher}}</p>
 							</div>
 						</div>
-						<div class="col-md-3 col-xs-3 col-sm-3">
-							<input type="number" value="1" min="1">
+						<div class="col-md-1 col-xs-1 col-sm-1">
+							<input type="number" ng-model="item.qty" value="1" min="1" ng-change="changeQty($index)" style="width:30px;height:34px">
 						</div>
 						<div class="col-md-2 col-xs-2 col-sm-2">
-							<h5>75000đ</h5>
+							<h5>{{item.item.sellingPrice*item.qty|number}}<sup>đ</sup></h5>
+						</div>
+						<div class="col-md-1 col-xs-1 col-sm-1">
+							<i class="fa fa-trash-o" ng-click="removeCart($index)"></i>
 						</div>
 					</div>
-					<div class="cart col-md-12 col-sm-12">
-						<div class="col-md-2 col-xs-2 col-sm-2" >
-							<img src="hình/gam7(1).u547.d20160826.t082041.947066.jpg" alt="" class="cart-img">
-						</div>
-						<div class="col-md-5 col-xs-5 col-sm-5">
-							<div>
-								<h4>Tôi thấy hoa vàng trên cỏ đen</h4>
-							</div>
-							<div>
-								<h6 class="author">
-									<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
-								</h6>
-								<p>Thể loại:</p>
-								<p>Nhà xuất bản:</p>
-							</div>
-							<div>
-								<button type="" class="btn btn-danger">Xoa</button>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-3 col-sm-3">
-							<input type="number" value="1" min="1">
-						</div>
-						<div class="col-md-2 col-xs-2 col-sm-2">
-							<h5>75000đ</h5>
-						</div>
-					</div>
+					
 			</div>
-			<div class="col-md-4 col-xs-4">
+			<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class=" heading col-md-12 col-sm-12">    
 				<h2>Thanh Toán</h2>
 			</div>
-			<div class="cart-cash col-md-12 col-sm-12">
-				<div class="cash-info col-md-12 col-sm-12"> 
+			<div class="cart-cash col-md-12 col-sm-12 col-xs-12">
+				<div class="cash-info col-md-12 col-sm-12 col-xs-12"> 
 					<p class="cash-info-left">Tạm tính</p>
-					<p class="cash-info-right">Price</p>
+					<p class="cash-info-right">{{total|number}}<sup>đ</sup></p>
 				</div>
-				<div class="cash-info col-md-12 col-sm-12"> 
+				<div class="cash-info col-md-12 col-sm-12 col-xs-12"> 
 					<p class="cash-info-left">Phí vận chuyển</p>
-					<p class="cash-info-right">Price</p>
+					<p class="cash-info-right">Miễn phí</p>
 				</div>
-				<div class="cash-info col-md-12 col-sm-12"> 
+				<div class="cash-info col-md-12 col-sm-12 col-xs-12"> 
 					<p class="discount">Mã giảm giá:</p>
 					<input type="text" placeholder="Nhập mã giảm giá">
 					<button class="btn btn-warning"> Áp dụng </button>
 				</div>
 			</div>
-			<div class="col-md-12 col-sm-12">
+			<div class="col-md-12 col-sm-12 col-xs-12">
 				<h4 class="cash-info-left">Tổng cộng:</h4>
-				<h4 class="cash-info-right"> Price </h4>
+				<h4 class="cash-info-right"> {{total|number}}<sup>đ</sup> </h4>
 			</div>
+			<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+                <md-button class="md-raised md-warn" ng-click="isLogged()? checkout():''">Checkout</md-button>
+            </div>
 		</div>
 		</div>
 		<div class="row" >
-			<div class="col-md-8">
+			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div>
 					<div class=" heading col-md-12 col-sm-12">    
 						<h2>Thông tin giao hàng</h2>
 					</div>
-					<div class="cart col-md-12 col-sm-12">
+					<div ng-hide="isLogged()">
+						<h4 class="un-iden">Vui lòng đăng nhập để được giao hàng</h4>
+					</div>
+					<div class="cart col-md-12 col-sm-12 col-xs-12" ng-show="isLogged()">
 						<div>
-							<p>Thông tin khách hàng</p>
-							<input type="text" placeholder="Full name">
-							<input type="email" placeholder="Email">
-							<input type="text" placeholder="Address">
+							<input type="text" placeholder="Full name" style="width:100%;margin:10px">
+							<input type="email" placeholder="Email" style="width:100%;margin:10px">
+							<input type="text" placeholder="Address" style="width:100%;margin:10px">
 						</div>
 					</div>
 				</div>

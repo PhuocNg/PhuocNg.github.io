@@ -20,27 +20,10 @@
 			<div class="col-md-9">
 				<!-- Slider-->
 				<div ng-init="getBanners()">
-						<div id="myCarousel" class="carousel slide" data-ride="carousel" >
-						  <!-- Indicators -->
-						  <ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="{{$index}}" ng-repeat="banner in banners"></li>
-						  </ol>
-
-						  <!-- Wrapper for slides -->
-						  <div class="carousel-inner">
-							<div ng-repeat="banner in banners" ng-class="{active:!$index}" class="item">
-							  <img ng-src="{{banner.imageUrl}}" alt="">
+						<div uib-carousel active="active" id="myCarousel" interval="myInterval" >
+							<div uib-slide ng-repeat="banner in banners" index="$index">
+								<img ng-src="{{banner.imageUrl}}" alt="" class="img-responsive">
 							</div>
-						  </div>
-						  <!-- Left and right controls -->
-						  <a class="left carousel-control" role="button" ng-click="prev($index)">
-							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						  </a>
-						  <a class="right carousel-control" role="button" ng-click="next($index)">
-							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						  </a>
 						</div>
 				</div>
 				
@@ -49,14 +32,14 @@
 						<h2>Sách mới <a href="#/bookAll" class="seeAll">Xem tất cả</a></h2>
 					</div>
 
-					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in books">
+					<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="book in filteredBooks">
 						<div class="book">	
 							<div class="book-heading">
 								<a href="#/bookDetail/{{book._id}}">
 									<img ng-src="{{book.images.main}}" alt="" class="thumbnail-img book-img">
 								</a>
 								<div class="icon">
-									<button aria-label="cart" class="btn btn-primary icon-cart" type="button">
+									<button aria-label="cart" class="btn btn-primary icon-cart" type="button" ng-click="addCart(book)">
 										<i class="fa fa-shopping-cart"></i>
 									</button>
 									<button aria-label="heart" class="btn btn-danger icon-heart" type="button">
@@ -69,15 +52,18 @@
 								<h6 class="author">
 									<a href="#/bookAuthor/{{book.author}}" class="author" data-toogle="tooltip"> {{book.author}}</a>
 								</h6>
-								<div class="star"></div> 
+								<span uib-rating ng-model="rating" max="max" read-only="true" on-hover="hoveringOver(value)" class="star"></span>
 								<p class="price">{{book.sellingPrice|number}}  <sup>đ</sup> </p>
 							</div>
 						</div>
 					</div>
 				
-					
 				</div>
+				<div class="col-sm-12" style="text-align:center">
+            		<ul uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination pagination-dark" boundary-link-numbers="true" next-text="Next" previous-text="Prev" ng-click="changePage()"></ul>
+            	</div>
 			</div>	
+			
 		</div>
 	</div>
 </div>

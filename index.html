@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<link rel="icon" href="pic/books-xxl.png" type="image/png" sizes="16x16">
+<title class="glyphicon glyphicon-book">Book Shop</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -25,10 +26,8 @@
  <!-- Angular Material Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-<!--Rating-->
+<!--Font awesome-->
 <link href="https://netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.css" rel="stylesheet">
-<script src="jQuery Raty/demo/javascripts/demo.js"></script>
-<script src="jQuery Raty/lib/jquery.raty-fa.js"></script>
 
 <!--textAngular-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-rangy.min.js"></script>
@@ -44,6 +43,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.min.js.map"></script>
 
+<!--UI Boostrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
 </head>
 
 <body ng-app="myApp">
@@ -52,11 +54,23 @@
   <div class="container-fluid" >
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
-      <a class="navbar-brand" href="#/"><i class="fa fa-leanpub"></i>BookShop</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <button type="button" class="navbar-toggle" style="float:left">
+        <a href="#/Cart" style="color:orange; font-size:16px;"><i class="glyphicon glyphicon-shopping-cart" ></i></a>           
+      </button>
+      <span class="logo">
+      	<a class="navbar-brand" href="#/"><img src="pic/book-xxl.png" alt="" style="width:25px;height:20px;display:inline-flex;">
+      		<cite>BookShop</cite>
+		</a>
+      </span>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" >
+    <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
 		  <li class="active"><a href="#/">TRANG CHỦ</a></li>
 		  <li class="dropdown">
@@ -65,42 +79,49 @@
 				<li ng-repeat="categories in genres"><a href="#/bookByGenres/{{categories._id}}">{{categories.name}}</a></li>
 			</ul>
 		  </li>
+     		<form class="navbar-form navbar-right nav-search">
+    			<div class="input-group" >
+    				<input type="text" class="form-control nav-input-search"  ng-model="text" placeholder="Tìm kiếm sách" required>
+    				<div class="input-group-addon nav-search-btn">
+						<md-button class="md-warn md-raised" type="submit" ng-click="go('/bookSearch/')">
+							<i class="fa fa-search"></i>
+						</md-button>
+    				</div>
+  				</div>
+     	</form>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li class="dropdown drop-right">
-			<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-shopping-cart" style="padding-right:2px"></span>GIỎ HÀNG <i>(0)</i> <span class="fa fa-caret-down"></span></a>
+      	<li ng-hide="isLogged()" class="dropdown"><a data-toggle="modal" data-target="#modal-sign-in">ĐĂNG NHẬP</a></li>
+		
+		<li ng-show="isLogged()" class="dropdown" ng-init="init()">
+        	<a class="dropdown-toggle" data-toggle="dropdown">{{user.name}}<span class="caret" style="padding-right:2px"></span></a>
+            	<ul class="drop-cate dropdown-menu">
+                  <li><a href="#/Info">Thông tin tài khoản</a></li>
+                  <li><a href="#/bookAdd">Admin</a></li>
+                  <li><a href="#/order">Thông tin đơn hàng</a></li>
+                  <li><a ng-click="logOut()" href="#/">Đăng xuất</a></li>
+                </ul>
+        </li>
+      	<li class="dropdown" id="myCart">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown">
+				<span class="fa fa-shopping-cart" style="padding-right:2px"></span>GIỎ HÀNG <i>({{all.totalQty}})</i> 
+				<span class="fa fa-caret-down"></span>
+			</a>
 			<ul class="drop-cate dropdown-menu" role="menu" >
-				<li class="drop-cart">
+				<li class="drop-cart" ng-repeat="item in cart">
 					<span>
                     	<span class="drop-cart-left">
-                        	<img  alt="">
+                        	<img ng-src="{{item.item.images.main}}" alt="">
                             <span class="drop-cart-info">
-                            	<span class="drop-cart-info-name">Toi thay hoa vang tren co xanh</span>
-                            	<span>23$</span>
+                            	<span class="drop-cart-info-name">{{item.item.title}}</span>
+								<span>{{item.item.sellingPrice}}<sup>đ</sup></span>
                             </span>
                     	 </span>
                     	 <span class="drop-cart-right">
-                        	<input class="drop-cart-form-control" type="number" min="1" value="1">
-                         	<span class="btn btn-xs btn-danger pull-right remove">
+                        	<input class="drop-cart-form-control" type="number" min="1" value="{{item.qty}}">
+                         	<button class="btn btn-xs btn-danger pull-right remove" ng-click="removeCart($index)">
                          		<i class="fa fa-close"></i>
-                         	</span>
-                     	 </span>
-                    </span>
-				</li>
-				<li class="drop-cart">
-					<span>
-                    	<span class="drop-cart-left">
-                        	<img  alt="">
-                            <span class="drop-cart-info">
-                            	<span class="drop-cart-info-name">Item name</span>
-                            	<span>23$</span>
-                            </span>
-                    	 </span>
-                    	 <span class="drop-cart-right">
-                        	<input class="drop-cart-form-control" type="number" min="1" value="1">
-                         	<span class="btn btn-xs btn-danger pull-right remove">
-                         		<i class="fa fa-close"></i>
-                         	</span>
+                         	</button>
                      	 </span>
                     </span>
 				</li>
@@ -110,30 +131,8 @@
 				</li>
 			</ul>
 		  </li>
-		<li ng-hide="isLogged()" class="dropdown drop-right"><a data-toggle="modal" data-target="#modal-sign-in">ĐĂNG NHẬP</a></li>
-		
-		<li ng-show="isLogged()" class="dropdown drop-right" ng-init="init()">
-               <a class="dropdown-toggle" data-toggle="dropdown">{{user.name}}<span class="caret" style="padding-right:2px"></span></a>
-                  <ul class="drop-cate dropdown-menu">
-                      <li><a href="#/Info">Thông tin tài khoản</a></li>
-                      <li><a href="#/bookAdd">Admin</a></li>
-                      <li><a ng-click="logOut()" href="#/">Đăng xuất</a></li>
-                  </ul>
-        </li>
-     	<li class="drop-right nav-search">
-     		<form class="nav navbar-nav navbar-right">
-    			<div class="input-group">
-    				<input type="text" class="form-control nav-input-search" ng-model="text" placeholder="Tìm kiếm sách" required>
-    				<div class="input-group-addon nav-search-btn">
-						<md-button class="md-warn md-raised" type="submit" ng-click="go('/bookSearch/')">
-							<i class="fa fa-search"></i>
-						</md-button>
-    				</div>
-  				</div>
-     		</form>
-     	</li>
       </ul>
-	<!-- Modal -->
+      <!-- Modal -->
 	<div class="modal fade" id="modal-sign-in" role="dialog" >
 				<div class="modal-dialog">
 				  <!-- Modal content-->
@@ -186,7 +185,9 @@
 						</div>
 					  	<div class="form-group">
 						  <label><span class="glyphicon glyphicon-repeat"></span> Nhập lại mật khẩu</label>
-						  <input type="password" class="form-control input-modal" placeholder="Enter password again" required>
+						  <input type="password" class="form-control input-modal" placeholder="Enter password again" name="re-psw"
+						   required>
+						  <p ng-show="signUpform.re-psw.$invalid && !signUpform.re-psw.$pristine" style="color:red"> *Password không trùng khớp</p>
 						</div>
 					  	<div class="form-group">
 						  <label><span class="glyphicon glyphicon-envelope"></span> Email</label>
@@ -206,21 +207,7 @@
 
 				</div>
 			  </div>
-	<div class="modal fade" id="{{books._id}}" role="dialog">
-				<div class="modal-dialog">
-
-				  <!-- Modal content-->
-				  <div class="modal-content">
-					<div class="modal-header">
-					  <button type="button" class="close" data-dismiss="modal">&times;</button>
-					  <h4 class="modal-title">Đăng nhập</h4>
-					  <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
-					  <button type="button" class="btn btn-warning" data-dismiss="modal" >Suy nghĩ lại</button>
-					</div>
-				  </div>
-
-				</div>
-			  </div>
+	
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
  </nav>
@@ -231,8 +218,8 @@
 <footer>
 	<div class="content">
 		<div class="row">
-			<div class="col-lg-4 col-md-4 col-xs-12" id="footer-logo">
-				<h1>Book Shop</h1>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="footer-logo">
+				<h1 class="logo" style="color:orange">BOOK SHOP</h1>
 				<div class="social-link">
 					<a href="">
 						<i class="fa fa-facebook"></i>
@@ -250,18 +237,23 @@
 						<i class="fa fa-snapchat"></i>
 					</a>
 				</div>
+				<div style="margin:20px; color:gray">
+					<p>Liên hệ: 0909 616 681</p>
+					<p>Email: thienphuoc237@gmail.com</p>
+					<p>Địa chỉ: 198 Đường 20, P.5, Q.GV</p>
+				</div>
 			</div>
-			<div class="col-lg-2 col-md-2 col-xs-12">
-				<h5 class="footer-title">ABOUT US</h5>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+				<h5 class="footer-title">GIỚI THIỆU</h5>
 				<ul class="footer">
-				<li><a href="">About Us</a></li>
-				<li><a href="">Our Team</a></li>
-				<li><a href="">Our Blog</a></li>
-				<li><a href="">Contact Us</a></li>
+				<li><a href="">Giới thiệu chung</a></li>
+				<li><a href="">Công ty</a></li>
+				<li><a href="">Blog</a></li>
+				<li><a href="">Liên hệ chúng tôi</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-2 col-md-2 col-xs-12">
-				<h5 class="footer-title">OUR NETWORK</h5>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+				<h5 class="footer-title">KẾT NỐI</h5>
 				<ul class="footer">
 				<li><a href="">Tiki</a></li>
 				<li><a href="">Book Store</a></li>
@@ -269,17 +261,17 @@
 				<li><a href="">E-Book</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-2 col-md-2 col-xs-12">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 				<h5 class="footer-title">SITE LINKS</h5>
 				<ul class="footer">
 				<li><a href="">Deals</a></li>
-				<li><a href="">Advertising</a></li>
-				<li><a href="">Support</a></li>
+				<li><a href="">Quảng Cáo</a></li>
+				<li><a href="">Hỗ trợ</a></li>
 				<li><a href="">Term &amp; Privacy</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-2 col-md-2 col-xs-12">
-				<h5 class="footer-title">LANGUAGES</h5>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+				<h5 class="footer-title">NGÔN NGỮ</h5>
 				<ul class="footer">
 				<li><a href="">English</a></li>
 				<li><a href="">France</a></li>

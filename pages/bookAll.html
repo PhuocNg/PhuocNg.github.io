@@ -50,7 +50,7 @@
 								<h6 class="author">
 									<a href="#/bookAuthor/{{book.author}}" class="author"> {{book.author}}</a>
 								</h6>
-								<div class="star"></div> 
+								<span uib-rating ng-model="rating" max="max" read-only="true" on-hover="hoveringOver(value)" class="star"></span>
 								<p class="price">{{book.sellingPrice|number}}  <sup>đ</sup> </p>
 							</div>
 						</div>

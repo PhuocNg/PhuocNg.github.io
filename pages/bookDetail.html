@@ -42,13 +42,13 @@
 					</div>
 					<div>
 						<span>
-							<div class="star"> </div>  (1 đánh giá) 
+							<span uib-rating ng-model="rate" max="max" read-only="true" on-hover="hoveringOver(value)" class="star"></span>  ({{book.comments.length}} đánh giá) 
 						</span>
 						<span class="pre-price">
 							{{book.previousPrice|number}} <sup>đ</sup>
 						</span>
 						<span class="selling-price">
-							{{book.sellingPrice|number}} <sup>đ</sup>
+							{{book.sellingPrice|number}} <sup>đ</sup> <span class="label label-danger">-{{((book.previousPrice - book.sellingPrice)/book.previousPrice)*100 | number:0}}%</span>
 						</span>
 						<span>
 							<cite>Tiết kiệm:</cite>
@@ -114,9 +114,10 @@
 					<div class="heading">
 						<h2>Bình luận</h2>
 					</div>
+					<span class="un-iden" style="padding-top:50px;">{{result}}</span>
 					<div class="row comment-line">
 						<div class="col-sm-12">
-							<div class="panel panel-white post panel-shadow" ng-repeat="book in book.comments">
+							<div class="panel panel-white post panel-shadow" ng-repeat="book in book.comments|orderBy: 'createdDate' :true ">
 								<div class="post-heading">
 									<div class="pull-left image">
 										<img ng-src="{{book._user.avatarUrl}}" class="img-circle avatar" alt="user profile image">
@@ -128,19 +129,12 @@
 											</a>
 												made a post.
 										</div>
-											<h6 class="text-muted time">{{book.createdDate|date:hour}}</h6>
+											<h6 class="text-muted time">{{book.createdDate|date:'dd/MM/yy h:mm a'}}</h6><br/>
+											<span uib-rating ng-model="book.rate" max="max " read-only="true " class="star"></span>
 									</div>
 								</div> 
 								<div class="post-description"> 	
 									<p>{{book.commentBody}}</p>
-									<div class="stats">
-										<a href="#" class="btn btn-default stat-item">
-											<i class="fa fa-thumbs-up"></i>
-										</a>
-										<a href="#" class="btn btn-default stat-item">
-											<i class="fa fa-thumbs-down"></i>
-										</a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -162,7 +156,7 @@
 							 <form name="" ng-submit="addComment(book)" class=" col-md-10 col-xs-10 col-lg-10" novalidate>
 								 <textarea cols="50" rows="10" ng-model="comment.commentBody" required></textarea>
 								 <div class="thongtin">
-									<label>Gửi đánh giá: </label> <div class="star"> </div>
+									<label>Gửi đánh giá: </label> <span uib-rating ng-model="comment.rate " max="max " read-only="isReadonly " on-hover="hoveringOver(value) " class="star"></span>
 								 </div>
 								 <md-button class="md-raised md-warn" type="submit" value="Submit"> Comment </md-button>
 							 </form>

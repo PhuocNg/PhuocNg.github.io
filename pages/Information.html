@@ -16,7 +16,7 @@
 					</div>
 				</div>
 				<div class="col-md-9 col-sm-9 col-xs-9" >
-					<div class="book">	
+					<div class="book" ng-show="!editProfie">	
 						<table>
 							<tr>
 								<th>Tên đăng nhập:</th>
@@ -25,6 +25,7 @@
 							<tr>
 								<th>Email:</th>
 								<td>{{user.email}}</td>
+								<td><md-button class="md-raised md-primary" ng-click="editProfie=true" style="text-align:left">Thay đổi</md-button></td>
 							</tr>
 							<tr>
 								<th>Địa chỉ:</th>
@@ -32,7 +33,34 @@
 							</tr>
 						</table>
 					</div>
-					<md-button class="md-raised md-primary">Thay đổi</md-button>
+					
+					<form class="profile" name="formProfile" ng-show="editProfie" ng-submit="updateUser()" novalidate>
+
+						<div class="form-group">
+							<input type="text" name="username" ng-model="editProfile.name" class="form-control" placeholder="Tên" ng-required="true">
+							<p ng-show="formProfile.username.$invalid && !formProfile.username.$pristine" style="color:red"> *Vui lòng nhập tên</p>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Avatar Url" ng-model="editProfile.avatarUrl">
+						</div>
+
+						<div class="form-group">
+							<input type="password" name="passwordcurrent" ng-model="editProfile.currentPassword" class="form-control " minlength="5" placeholder="Password" ng-required="true">
+							<p ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" style="color:red"> *Password không đúng</p>
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" ng-model="editProfile.password" class="form-control " minlength="5" placeholder="Password mới" ng-required="true">
+							<p ng-show="formProfile.password.$invalid && !formProfile.password.$pristine" style="color:red"> *Password không hợp lệ</p>
+						</div>
+						<div class="form-group">
+							<input type="password" name="passwordConfirm" ng-model="passwordConfirm" compare-to="editProfile.password" class="form-control " placeholder="Nhập lại password" ng-required="true">
+							<p ng-show="formProfile.passwordConfirm.$invalid && !formProfile.passwordConfirm.$pristine" style="color:red"> *Password không trùng khớp</p>
+
+						</div>
+                		<md-button class="md-raised md-primary" type="button" ng-click="editProfie=false" style="background-color:royalblue">Trở lại</md-button>
+                		<md-button class="md-raised md-warn" type="submit" style="background-color:red;float:right" > Thay đổi</md-button>
+
+                	</form>
 				</div>
 				
 					
